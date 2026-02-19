@@ -18,6 +18,8 @@ namespace LibraTrack
         private AddBooks addBooks;
         private IssueBooks issueBooks;
         private ReturnBooks returnBooks;
+        private AnalyticsUserControl analyticsUserControl;
+        private BookRequests bookRequests;
 
         public Dashboard DashboardInstance => dashboard;
         public MainForm()
@@ -90,6 +92,18 @@ namespace LibraTrack
             returnBooks.Visible = true;
 
             returnBooks.refreshData();
+        }
+
+
+        private void analytics_btn_Click(object sender, EventArgs e)
+        {
+            dashboard.Visible = false;
+            addBooks.Visible = false;
+            issueBooks.Visible = false;
+            returnBooks.Visible = false;
+            analyticsUserControl.Visible = true;
+
+            analyticsUserControl.refreshData();
         }
 
 
@@ -169,21 +183,29 @@ namespace LibraTrack
             addBooks = new AddBooks();
             issueBooks = new IssueBooks();
             returnBooks = new ReturnBooks();
+            analyticsUserControl = new AnalyticsUserControl();
+            bookRequests = new BookRequests();
 
             panelMain.Controls.Add(dashboard);
             panelMain.Controls.Add(addBooks);
             panelMain.Controls.Add(issueBooks);
             panelMain.Controls.Add(returnBooks);
+            panelMain.Controls.Add(analyticsUserControl);
+            panelMain.Controls.Add(bookRequests);
 
             dashboard.Dock = DockStyle.Fill;
             addBooks.Dock = DockStyle.Fill;
             issueBooks.Dock = DockStyle.Fill;
             returnBooks.Dock = DockStyle.Fill;
+            analyticsUserControl.Dock = DockStyle.Fill;
+            bookRequests.Dock = DockStyle.Fill;
 
             addBooks.Visible = false;
             issueBooks.Visible = false;
             returnBooks.Visible = false;
             dashboard.Visible = true;
+            analyticsUserControl.Visible = false;
+            bookRequests.Visible = false;
             //LoadUserControl(dashboard);
 
             dashboard.refreshData();
@@ -225,6 +247,19 @@ namespace LibraTrack
             {
                 issueBooks.refreshData();
             }
+        }
+
+        private void request_btn_Click(object sender, EventArgs e)
+        {
+            dashboard.Visible = false;
+            addBooks.Visible = false;
+            issueBooks.Visible = false;
+            returnBooks.Visible = false;
+            analyticsUserControl.Visible = false;
+
+            bookRequests.Visible = true;
+
+            bookRequests.refreshData();
         }
     }
 }

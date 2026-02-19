@@ -18,14 +18,13 @@ SELECT * FROM GradeSections;
 
 SELECT * FROM issue_books;
 
-
-SELECT id, username, role FROM users WHERE username = 'itstaff';
-
+SELECT * FROM book_requests;
 
 SELECT DISTINCT status FROM books;
 
-
-SELECT id, status, date_delete FROM issues WHERE status LIKE '%Return%'
+SELECT COLUMN_NAME, DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'issue_books';
 
 
 SELECT DISTINCT status FROM issues
@@ -82,6 +81,11 @@ SELECT DISTINCT status FROM issues;
 SELECT COUNT(id) FROM issues WHERE status = 'Return' AND date_delete IS NULL;
 
 SELECT COUNT(*) FROM issues WHERE status = 'Return';
+
+SELECT COLUMN_NAME 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'issues';
+
 
 
 SELECT TABLE_NAME
@@ -151,6 +155,10 @@ WHERE ISNUMERIC(Copies) = 0
    EXEC sp_help issues;
 
 
+SELECT COLUMN_NAME
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'books';
+
    SELECT Copies FROM Books
 WHERE ISNUMERIC(Copies) = 0 OR Copies IS NULL
 
@@ -206,6 +214,26 @@ FROM issue_books
 WHERE issue_id = 'YOUR_ISSUE_ID';
 
 SELECT issue_id, date_delete FROM issues;
+
+SELECT name
+FROM sys.key_constraints
+WHERE type = 'PK'
+AND parent_object_id = OBJECT_ID('books');
+
+SELECT name 
+FROM sys.foreign_keys
+WHERE parent_object_id = OBJECT_ID('BookCopies');
+
+SELECT COLUMN_NAME, DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'books'
+
+SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'books'
+AND COLUMN_NAME = 'id';
+
+EXEC sp_help 'books';
 
 
 /**----------------------------------------------------------------------**/
@@ -351,7 +379,7 @@ ALTER TABLE Books ADD available INT NOT NULL DEFAULT 0;
 
 UPDATE Books SET available = copies;
 
-
+ALTER TABLE books DROP CONSTRAINT PK_books;
 
 --Drop the old INT column
 ALTER TABLE BookCopies
@@ -381,8 +409,10 @@ DROP CONSTRAINT PK_issues;   -- replace with the actual constraint name
 
 EXEC sp_help 'issues';
 
-ALTER TABLE issues
-DROP CONSTRAINT PK__issues__3213E83F92DE0320;
+EXEC sp_help 'books';
+
+ALTER TABLE books
+DROP CONSTRAINT PK__books__3213E83F8E491261;
 
 EXEC sp_rename 'issues.temp_id', 'id', 'COLUMN';
 
@@ -463,6 +493,31 @@ ADD CONSTRAINT FK_issue_books_issue
 FOREIGN KEY (issue_id)
 REFERENCES issues(issue_id);
 
+ALTER TABLE BookCopies DROP CONSTRAINT FK__BookCopie__BookI__46B27FE2;
+ALTER TABLE BookCopies DROP CONSTRAINT FK_BookCopies_Books;
+
+ALTER TABLE BookCopies
+ADD BookPK INT;
+
+UPDATE bc
+SET bc.BookPK = b.BookPK
+FROM BookCopies bc
+JOIN books b ON bc.BookID = b.id;
+
+ALTER TABLE BookCopies
+ALTER COLUMN BookPK INT NOT NULL;
+
+ALTER TABLE BookCopies
+ADD CONSTRAINT FK_BookCopies_Books_New
+FOREIGN KEY (BookPK)
+REFERENCES books(BookPK);
+
+ALTER TABLE books
+ADD CONSTRAINT PK_books_BookPK PRIMARY KEY (BookPK);
+
+
+ALTER TABLE BookCopies
+DROP CONSTRAINT FK_BookCopies_Books;
 
 
 

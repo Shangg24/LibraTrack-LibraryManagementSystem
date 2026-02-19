@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.request_btn = new System.Windows.Forms.Button();
+            this.analytics_btn = new System.Windows.Forms.Button();
             this.logout_btn = new System.Windows.Forms.Button();
             this.returnBooks_btn = new System.Windows.Forms.Button();
             this.issueBooks_btn = new System.Windows.Forms.Button();
@@ -54,6 +56,8 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.request_btn);
+            this.panel2.Controls.Add(this.analytics_btn);
             this.panel2.Controls.Add(this.logout_btn);
             this.panel2.Controls.Add(this.returnBooks_btn);
             this.panel2.Controls.Add(this.issueBooks_btn);
@@ -66,6 +70,42 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(220, 660);
             this.panel2.TabIndex = 1;
+            // 
+            // request_btn
+            // 
+            this.request_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.request_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.request_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            this.request_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.request_btn.ForeColor = System.Drawing.Color.White;
+            this.request_btn.Image = global::LibraTrack.Properties.Resources.icons8_ask_question_32;
+            this.request_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.request_btn.Location = new System.Drawing.Point(8, 424);
+            this.request_btn.Name = "request_btn";
+            this.request_btn.Size = new System.Drawing.Size(200, 50);
+            this.request_btn.TabIndex = 10;
+            this.request_btn.Text = "REQUESTS";
+            this.request_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.request_btn.UseVisualStyleBackColor = false;
+            this.request_btn.Click += new System.EventHandler(this.request_btn_Click);
+            // 
+            // analytics_btn
+            // 
+            this.analytics_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.analytics_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.analytics_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            this.analytics_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.analytics_btn.ForeColor = System.Drawing.Color.White;
+            this.analytics_btn.Image = global::LibraTrack.Properties.Resources.icons8_analytics_32;
+            this.analytics_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.analytics_btn.Location = new System.Drawing.Point(8, 483);
+            this.analytics_btn.Name = "analytics_btn";
+            this.analytics_btn.Size = new System.Drawing.Size(200, 50);
+            this.analytics_btn.TabIndex = 9;
+            this.analytics_btn.Text = "ANALYTICS";
+            this.analytics_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.analytics_btn.UseVisualStyleBackColor = false;
+            this.analytics_btn.Click += new System.EventHandler(this.analytics_btn_Click);
             // 
             // logout_btn
             // 
@@ -92,7 +132,7 @@
             this.returnBooks_btn.ForeColor = System.Drawing.Color.White;
             this.returnBooks_btn.Image = global::LibraTrack.Properties.Resources.issue_book;
             this.returnBooks_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.returnBooks_btn.Location = new System.Drawing.Point(9, 417);
+            this.returnBooks_btn.Location = new System.Drawing.Point(8, 365);
             this.returnBooks_btn.Name = "returnBooks_btn";
             this.returnBooks_btn.Size = new System.Drawing.Size(200, 50);
             this.returnBooks_btn.TabIndex = 7;
@@ -110,7 +150,7 @@
             this.issueBooks_btn.ForeColor = System.Drawing.Color.White;
             this.issueBooks_btn.Image = global::LibraTrack.Properties.Resources.return_book;
             this.issueBooks_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.issueBooks_btn.Location = new System.Drawing.Point(9, 352);
+            this.issueBooks_btn.Location = new System.Drawing.Point(8, 307);
             this.issueBooks_btn.Name = "issueBooks_btn";
             this.issueBooks_btn.Size = new System.Drawing.Size(200, 50);
             this.issueBooks_btn.TabIndex = 6;
@@ -128,7 +168,7 @@
             this.addBooks_btn.ForeColor = System.Drawing.Color.White;
             this.addBooks_btn.Image = global::LibraTrack.Properties.Resources.add_book;
             this.addBooks_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addBooks_btn.Location = new System.Drawing.Point(9, 287);
+            this.addBooks_btn.Location = new System.Drawing.Point(8, 249);
             this.addBooks_btn.Name = "addBooks_btn";
             this.addBooks_btn.Size = new System.Drawing.Size(200, 50);
             this.addBooks_btn.TabIndex = 5;
@@ -146,7 +186,7 @@
             this.dashboard_btn.ForeColor = System.Drawing.Color.White;
             this.dashboard_btn.Image = global::LibraTrack.Properties.Resources.Dash_board;
             this.dashboard_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.dashboard_btn.Location = new System.Drawing.Point(9, 221);
+            this.dashboard_btn.Location = new System.Drawing.Point(8, 189);
             this.dashboard_btn.Name = "dashboard_btn";
             this.dashboard_btn.Size = new System.Drawing.Size(200, 50);
             this.dashboard_btn.TabIndex = 4;
@@ -307,5 +347,7 @@
         private System.Windows.Forms.Label mainForm_maximizeBtn;
         private System.Windows.Forms.Label mainForm_minimizeBtn;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Button analytics_btn;
+        private System.Windows.Forms.Button request_btn;
     }
 }

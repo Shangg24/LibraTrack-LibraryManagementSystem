@@ -86,6 +86,18 @@
     <Compile Include="AdminPanelGradeSection.Designer.cs">
       <DependentUpon>AdminPanelGradeSection.cs</DependentUpon>
     </Compile>
+    <Compile Include="AnalyticsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AnalyticsUserControl.Designer.cs">
+      <DependentUpon>AnalyticsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BookRequests.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BookRequests.Designer.cs">
+      <DependentUpon>BookRequests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -149,6 +161,12 @@
     <EmbeddedResource Include="AdminPanelGradeSection.resx">
       <DependentUpon>AdminPanelGradeSection.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AnalyticsUserControl.resx">
+      <DependentUpon>AnalyticsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookRequests.resx">
+      <DependentUpon>BookRequests.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,13 +225,11 @@
   <ItemGroup>
     <Content Include="Assets\Logo.png" />
     <None Include="Resources\School_Logo.png" />
-    <Content Include="LibraTrack.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="LibraTrack_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>LibraTrack.mdf</DependentUpon>
-    </Content>
+    <None Include="Resources\icons8-analytics-100.png" />
+    <None Include="Resources\icons8-analytics-60.png" />
+    <None Include="Resources\icons8-analytics-32.png" />
+    <None Include="Resources\icons8-request-32.png" />
+    <None Include="Resources\icons8-ask-question-32.png" />
     <Content Include="SQLQuery1.sql" />
     <None Include="Resources\icons8-borrow-book-60.png" />
     <None Include="Resources\icons8-return-book-60.png" />
