@@ -250,6 +250,7 @@
             this.dataGridViewReturnBooks.AllowUserToAddRows = false;
             this.dataGridViewReturnBooks.AllowUserToDeleteRows = false;
             this.dataGridViewReturnBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewReturnBooks.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewReturnBooks.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewReturnBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;

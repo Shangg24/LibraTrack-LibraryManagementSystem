@@ -96,13 +96,18 @@ namespace LibraTrack
                 connect.Open();
 
             string updateQuery = @"
-        UPDATE book_requests
-        SET status = 'Approved'
-        WHERE request_id = @id";
+            UPDATE book_requests
+            SET status = 'Reserved'
+            WHERE request_id = @id";
 
             SqlCommand cmd = new SqlCommand(updateQuery, connect);
             cmd.Parameters.AddWithValue("@id", requestId);
             cmd.ExecuteNonQuery();
+
+            string bookTitle = dataGridViewRequests.SelectedRows[0].Cells["book_title"].Value.ToString();
+            string studentId = dataGridViewRequests.SelectedRows[0].Cells["ID_no"].Value.ToString();
+
+            LogActivity($"Approved book request '{bookTitle}' for Student ID {studentId}");
 
             connect.Close();
 
@@ -134,6 +139,11 @@ namespace LibraTrack
             cmd.Parameters.AddWithValue("@id", requestId);
             cmd.ExecuteNonQuery();
 
+            string bookTitle = dataGridViewRequests.SelectedRows[0].Cells["book_title"].Value.ToString();
+            string studentId = dataGridViewRequests.SelectedRows[0].Cells["ID_no"].Value.ToString();
+
+            LogActivity($"Rejected book request '{bookTitle}' for Student ID {studentId}");
+
             connect.Close();
 
             MessageBox.Show("Request Rejected.");
@@ -148,7 +158,41 @@ namespace LibraTrack
                 Invoke((MethodInvoker)refreshData);
                 return;
             }
+            LoadRequests();
         }
+
+
+        private void LogActivity(string message)
+        {
+            try
+            {
+                // Save to ActivityLog table
+                using (SqlConnection logConn = new SqlConnection(connect.ConnectionString))
+                {
+                    logConn.Open();
+
+                    string logQuery = "INSERT INTO ActivityLog (ActivityDate, ActivityDescription) VALUES (@date, @desc)";
+
+                    using (SqlCommand cmd = new SqlCommand(logQuery, logConn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@desc", message);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // Update dashboard in real-time
+                if (FindForm() is MainForm main)
+                {
+                    main.AddDashboardActivity(message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error logging activity: " + ex.Message);
+            }
+        }
+
 
         private void dataGridViewRequests_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -160,12 +204,12 @@ namespace LibraTrack
                     e.CellStyle.BackColor = Color.Khaki;
 
                 else if (status == "Reserved")
-                    e.CellStyle.BackColor = Color.LightBlue;
+                    e.CellStyle.BackColor = Color.PeachPuff;
 
                 else if (status == "Rejected")
                     e.CellStyle.BackColor = Color.LightCoral;
 
-                else if (status == "Borrowed")
+                else if (status == "Completed")
                     e.CellStyle.BackColor = Color.LightGreen;
             }
         }

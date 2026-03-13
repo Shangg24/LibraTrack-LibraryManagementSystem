@@ -82,7 +82,9 @@ namespace LibraTrack
 
             DataTable predictionTable = new DataTable();
             predictionTable.Columns.Add("Book Title");
-            predictionTable.Columns.Add("Predicted Borrow Next Month");
+            predictionTable.Columns.Add("Expected Borrowings");
+            predictionTable.Columns.Add("Demand Level");
+            predictionTable.Columns.Add("Trend");
 
             var groupedBooks = dt.AsEnumerable()
                 .GroupBy(r => r["book_title"].ToString());
@@ -100,11 +102,57 @@ namespace LibraTrack
                 if (lastThreeMonths.Count > 0)
                 {
                     double prediction = lastThreeMonths.Average();
-                    predictionTable.Rows.Add(book.Key, Math.Round(prediction, 0));
+                    int roundedPrediction = Convert.ToInt32(Math.Round(prediction, 0));
+
+                    string demandLevel = "Normal";
+
+                    if (roundedPrediction >= 5)
+                        demandLevel = "High Demand";
+                    else if (roundedPrediction <= 1)
+                        demandLevel = "Low Demand";
+
+                    string trend = "Stable";
+
+                    if (lastThreeMonths.Count >= 2)
+                    {
+                        if (lastThreeMonths[0] > lastThreeMonths[1])
+                            trend = "Increasing";
+                        else if (lastThreeMonths[0] < lastThreeMonths[1])
+                            trend = "Decreasing";
+                    }
+
+                    predictionTable.Rows.Add(book.Key, roundedPrediction, demandLevel, trend);
                 }
             }
 
             dataGridViewPrediction.DataSource = predictionTable;
+
+            foreach (DataGridViewRow row in dataGridViewPrediction.Rows)
+            {
+                if (row.Cells["Demand Level"].Value != null)
+                {
+                    string level = row.Cells["Demand Level"].Value.ToString();
+
+                    if (level == "High Demand")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    }
+                    else if (level == "Low Demand")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightPink;
+                    }
+                }
+
+                if (row.Cells["Trend"].Value != null)
+                {
+                    string trendValue = row.Cells["Trend"].Value.ToString();
+
+                    if (trendValue == "Increasing")
+                        row.Cells["Trend"].Style.ForeColor = Color.Green;
+                    else if (trendValue == "Decreasing")
+                        row.Cells["Trend"].Style.ForeColor = Color.Red;
+                }
+            }
         }
 
 

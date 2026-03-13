@@ -139,7 +139,7 @@ namespace LibraTrack
                         // 4️⃣ Check remaining borrowed books
                         string checkQuery = @"SELECT COUNT(*)
                                       FROM issue_books
-                                      WHERE issue_id = @iid AND status = 'Borrowed'";
+                                      WHERE issue_id = @iid AND status = 'Issued'";
 
                         int remaining;
 
@@ -162,9 +162,25 @@ namespace LibraTrack
                                 cmd4.Parameters.AddWithValue("@rdate", DateTime.Now);
                                 cmd4.ExecuteNonQuery();
                             }
+                            // 5️⃣ Update related request to Completed
+                            string updateRequest = @"
+                            UPDATE book_requests
+                            SET status = 'Completed'
+                            WHERE ID_no = (
+                            SELECT ID_no FROM issues WHERE issue_id = @iid)
+                            AND book_id IN (SELECT book_id FROM issue_books WHERE issue_id = @iid)
+                            AND status = 'Borrowed'";
+
+                            using (SqlCommand cmd5 = new SqlCommand(updateRequest, connect, tx))
+                            {
+                                cmd5.Parameters.AddWithValue("@iid", issueId);
+                                cmd5.ExecuteNonQuery();
+                            }
                         }
 
                         tx.Commit();
+
+                        LogActivity($"Books returned by {returnBooks_name.Text} (Issue ID: {issueId})");
 
                         if (FindForm() is MainForm mainForm)
                         {
@@ -202,18 +218,24 @@ namespace LibraTrack
                 if (connect.State == ConnectionState.Closed) connect.Open();
 
                 string query = @"
-            SELECT issue_id AS IssueID,
-                   full_name AS Name,
-                   contact AS Contact,
-                   email AS Email,
-                   ID_no AS StudentID,
-                   grade_section AS GradeSection,
-                   issue_date AS IssueDate,
-                   return_date AS ReturnDate,
-                   status AS Status   
-            FROM issues
-            WHERE date_delete IS NULL
-            ORDER BY date_insert DESC";
+                SELECT issue_id AS IssueID,
+                       full_name AS Name,
+                       contact AS Contact,
+                       email AS Email,
+                       ID_no AS StudentID,
+                       grade_section AS GradeSection,
+                       issue_date AS IssueDate,
+                       return_date AS ReturnDate,
+                CASE 
+                WHEN status = 'Issued' 
+                 AND return_date IS NOT NULL 
+                 AND return_date < GETDATE()
+                THEN 'Overdue'
+                ELSE status
+                END AS Status
+                FROM issues
+                WHERE date_delete IS NULL
+                ORDER BY date_insert DESC";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 using (SqlDataAdapter da = new SqlDataAdapter(cmd))
@@ -356,9 +378,14 @@ namespace LibraTrack
                         e.CellStyle.BackColor = Color.MediumSpringGreen;
                         e.CellStyle.ForeColor = Color.Black;
                     }
-                    else if (status == "Not Return")
+                    else if (status == "Issued")
                     {
                         e.CellStyle.BackColor = Color.Khaki; // yellow
+                        e.CellStyle.ForeColor = Color.Black;
+                    }
+                    else if (status == "Overdue")
+                    {
+                        e.CellStyle.BackColor = Color.LightCoral;
                         e.CellStyle.ForeColor = Color.Black;
                     }
                 }

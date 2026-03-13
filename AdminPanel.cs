@@ -25,11 +25,13 @@ namespace LibraTrack
             // Dock BOTH usercontrols
             adminPanelAccounts1.Dock = DockStyle.Fill;
             adminPanelGradeSection1.Dock = DockStyle.Fill;
+            studentPortalAccounts1.Dock = DockStyle.Fill;
 
             // Show Accounts by default
             adminPanelAccounts1.Visible = true;
             adminPanelGradeSection1.Visible = false;
-           
+            studentPortalAccounts1.Visible = false;
+
             adminPanelAccounts1.BringToFront();
             this.Shown += AdminPanel_Shown;
 
@@ -141,5 +143,14 @@ namespace LibraTrack
             base.WndProc(ref m);
         }
 
+        private void Students_btn_Click(object sender, EventArgs e)
+        {
+            adminPanelAccounts1.Visible = false;
+            adminPanelGradeSection1.Visible = false;
+            studentPortalAccounts1.Visible = true;
+
+            studentPortalAccounts1.BringToFront();
+             studentPortalAccounts1.refreshData();
+        }
     }
 }

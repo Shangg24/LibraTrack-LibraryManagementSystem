@@ -149,6 +149,12 @@
     <Compile Include="ReturnBooks.Designer.cs">
       <DependentUpon>ReturnBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="StudentPortalAccounts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StudentPortalAccounts.Designer.cs">
+      <DependentUpon>StudentPortalAccounts.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddBooks.resx">
       <DependentUpon>AddBooks.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnBooks.resx">
       <DependentUpon>ReturnBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentPortalAccounts.resx">
+      <DependentUpon>StudentPortalAccounts.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\AddBooks.datasource" />
     <None Include="Properties\DataSources\AdminPanel.datasource" />

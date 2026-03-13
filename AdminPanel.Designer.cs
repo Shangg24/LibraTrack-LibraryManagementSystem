@@ -29,14 +29,17 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.logout_btn = new System.Windows.Forms.Button();
+            this.Students_btn = new System.Windows.Forms.Button();
             this.GradeSection_btn = new System.Windows.Forms.Button();
             this.RegisteredAccounts_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.logout_btn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.adminPanelAccounts1 = new LibraTrack.AdminPanelAccounts();
             this.adminPanelGradeSection1 = new LibraTrack.AdminPanelGradeSection();
+            this.studentPortalAccounts1 = new LibraTrack.StudentPortalAccounts();
             this.adminPanel_exitBtn = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,6 +48,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -53,39 +57,37 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panel2.Controls.Add(this.logout_btn);
+            this.panel2.Controls.Add(this.Students_btn);
             this.panel2.Controls.Add(this.GradeSection_btn);
             this.panel2.Controls.Add(this.RegisteredAccounts_btn);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 40);
+            this.panel2.Location = new System.Drawing.Point(0, 33);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(266, 625);
+            this.panel2.Size = new System.Drawing.Size(222, 632);
             this.panel2.TabIndex = 2;
             // 
-            // logout_btn
+            // Students_btn
             // 
-            this.logout_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logout_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.logout_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.logout_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
-            this.logout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logout_btn.ForeColor = System.Drawing.Color.White;
-            this.logout_btn.Image = global::LibraTrack.Properties.Resources.log_out;
-            this.logout_btn.Location = new System.Drawing.Point(0, 580);
-            this.logout_btn.Name = "logout_btn";
-            this.logout_btn.Size = new System.Drawing.Size(266, 45);
-            this.logout_btn.TabIndex = 9;
-            this.logout_btn.UseVisualStyleBackColor = true;
-            this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
+            this.Students_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Students_btn.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Students_btn.ForeColor = System.Drawing.SystemColors.Control;
+            this.Students_btn.Location = new System.Drawing.Point(26, 414);
+            this.Students_btn.Name = "Students_btn";
+            this.Students_btn.Size = new System.Drawing.Size(175, 62);
+            this.Students_btn.TabIndex = 10;
+            this.Students_btn.Text = "Students";
+            this.Students_btn.UseVisualStyleBackColor = false;
+            this.Students_btn.Click += new System.EventHandler(this.Students_btn_Click);
             // 
             // GradeSection_btn
             // 
             this.GradeSection_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.GradeSection_btn.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GradeSection_btn.ForeColor = System.Drawing.SystemColors.Control;
-            this.GradeSection_btn.Location = new System.Drawing.Point(44, 359);
+            this.GradeSection_btn.Location = new System.Drawing.Point(26, 332);
             this.GradeSection_btn.Name = "GradeSection_btn";
             this.GradeSection_btn.Size = new System.Drawing.Size(175, 62);
             this.GradeSection_btn.TabIndex = 4;
@@ -98,7 +100,7 @@
             this.RegisteredAccounts_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.RegisteredAccounts_btn.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisteredAccounts_btn.ForeColor = System.Drawing.SystemColors.Control;
-            this.RegisteredAccounts_btn.Location = new System.Drawing.Point(44, 278);
+            this.RegisteredAccounts_btn.Location = new System.Drawing.Point(26, 250);
             this.RegisteredAccounts_btn.Name = "RegisteredAccounts_btn";
             this.RegisteredAccounts_btn.Size = new System.Drawing.Size(175, 62);
             this.RegisteredAccounts_btn.TabIndex = 3;
@@ -111,7 +113,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(62, 194);
+            this.label3.Location = new System.Drawing.Point(44, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 21);
             this.label3.TabIndex = 3;
@@ -120,21 +122,46 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LibraTrack.Properties.Resources.Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(80, 80);
+            this.pictureBox1.Location = new System.Drawing.Point(62, 71);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.logout_btn);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 538);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(222, 94);
+            this.panel4.TabIndex = 3;
+            // 
+            // logout_btn
+            // 
+            this.logout_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.logout_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.logout_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            this.logout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logout_btn.ForeColor = System.Drawing.Color.White;
+            this.logout_btn.Image = global::LibraTrack.Properties.Resources.log_out;
+            this.logout_btn.Location = new System.Drawing.Point(80, 11);
+            this.logout_btn.Name = "logout_btn";
+            this.logout_btn.Size = new System.Drawing.Size(63, 59);
+            this.logout_btn.TabIndex = 9;
+            this.logout_btn.UseVisualStyleBackColor = true;
+            this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.adminPanelAccounts1);
             this.panel3.Controls.Add(this.adminPanelGradeSection1);
+            this.panel3.Controls.Add(this.studentPortalAccounts1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(266, 40);
+            this.panel3.Location = new System.Drawing.Point(222, 33);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(918, 625);
+            this.panel3.Size = new System.Drawing.Size(962, 632);
             this.panel3.TabIndex = 3;
             // 
             // adminPanelAccounts1
@@ -142,7 +169,7 @@
             this.adminPanelAccounts1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.adminPanelAccounts1.Location = new System.Drawing.Point(0, 0);
             this.adminPanelAccounts1.Name = "adminPanelAccounts1";
-            this.adminPanelAccounts1.Size = new System.Drawing.Size(918, 625);
+            this.adminPanelAccounts1.Size = new System.Drawing.Size(962, 632);
             this.adminPanelAccounts1.TabIndex = 1;
             // 
             // adminPanelGradeSection1
@@ -150,8 +177,16 @@
             this.adminPanelGradeSection1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.adminPanelGradeSection1.Location = new System.Drawing.Point(0, 0);
             this.adminPanelGradeSection1.Name = "adminPanelGradeSection1";
-            this.adminPanelGradeSection1.Size = new System.Drawing.Size(918, 625);
+            this.adminPanelGradeSection1.Size = new System.Drawing.Size(962, 632);
             this.adminPanelGradeSection1.TabIndex = 0;
+            // 
+            // studentPortalAccounts1
+            // 
+            this.studentPortalAccounts1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.studentPortalAccounts1.Location = new System.Drawing.Point(0, 0);
+            this.studentPortalAccounts1.Name = "studentPortalAccounts1";
+            this.studentPortalAccounts1.Size = new System.Drawing.Size(962, 632);
+            this.studentPortalAccounts1.TabIndex = 2;
             // 
             // adminPanel_exitBtn
             // 
@@ -191,7 +226,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1184, 40);
+            this.panel1.Size = new System.Drawing.Size(1184, 33);
             this.panel1.TabIndex = 1;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
@@ -254,6 +289,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -278,5 +314,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label adminPanel_maximizeBtn;
         private System.Windows.Forms.Label adminPanel_minimizeBtn;
+        private System.Windows.Forms.Button Students_btn;
+        private StudentPortalAccounts studentPortalAccounts1;
+        private System.Windows.Forms.Panel panel4;
     }
 }

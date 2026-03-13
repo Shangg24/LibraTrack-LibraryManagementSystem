@@ -46,10 +46,14 @@
             this.mainForm_maximizeBtn = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -58,13 +62,13 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.request_btn);
             this.panel2.Controls.Add(this.analytics_btn);
-            this.panel2.Controls.Add(this.logout_btn);
             this.panel2.Controls.Add(this.returnBooks_btn);
             this.panel2.Controls.Add(this.issueBooks_btn);
             this.panel2.Controls.Add(this.addBooks_btn);
             this.panel2.Controls.Add(this.dashboard_btn);
             this.panel2.Controls.Add(this.greet_label);
             this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 40);
             this.panel2.Name = "panel2";
@@ -80,7 +84,7 @@
             this.request_btn.ForeColor = System.Drawing.Color.White;
             this.request_btn.Image = global::LibraTrack.Properties.Resources.icons8_ask_question_32;
             this.request_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.request_btn.Location = new System.Drawing.Point(8, 424);
+            this.request_btn.Location = new System.Drawing.Point(8, 436);
             this.request_btn.Name = "request_btn";
             this.request_btn.Size = new System.Drawing.Size(200, 50);
             this.request_btn.TabIndex = 10;
@@ -98,7 +102,7 @@
             this.analytics_btn.ForeColor = System.Drawing.Color.White;
             this.analytics_btn.Image = global::LibraTrack.Properties.Resources.icons8_analytics_32;
             this.analytics_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.analytics_btn.Location = new System.Drawing.Point(8, 483);
+            this.analytics_btn.Location = new System.Drawing.Point(8, 499);
             this.analytics_btn.Name = "analytics_btn";
             this.analytics_btn.Size = new System.Drawing.Size(200, 50);
             this.analytics_btn.TabIndex = 9;
@@ -110,15 +114,14 @@
             // logout_btn
             // 
             this.logout_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logout_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.logout_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
             this.logout_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
             this.logout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logout_btn.ForeColor = System.Drawing.Color.White;
             this.logout_btn.Image = global::LibraTrack.Properties.Resources.log_out;
-            this.logout_btn.Location = new System.Drawing.Point(0, 608);
+            this.logout_btn.Location = new System.Drawing.Point(77, 9);
             this.logout_btn.Name = "logout_btn";
-            this.logout_btn.Size = new System.Drawing.Size(218, 50);
+            this.logout_btn.Size = new System.Drawing.Size(54, 50);
             this.logout_btn.TabIndex = 8;
             this.logout_btn.UseVisualStyleBackColor = true;
             this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
@@ -132,7 +135,7 @@
             this.returnBooks_btn.ForeColor = System.Drawing.Color.White;
             this.returnBooks_btn.Image = global::LibraTrack.Properties.Resources.issue_book;
             this.returnBooks_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.returnBooks_btn.Location = new System.Drawing.Point(8, 365);
+            this.returnBooks_btn.Location = new System.Drawing.Point(8, 373);
             this.returnBooks_btn.Name = "returnBooks_btn";
             this.returnBooks_btn.Size = new System.Drawing.Size(200, 50);
             this.returnBooks_btn.TabIndex = 7;
@@ -150,7 +153,7 @@
             this.issueBooks_btn.ForeColor = System.Drawing.Color.White;
             this.issueBooks_btn.Image = global::LibraTrack.Properties.Resources.return_book;
             this.issueBooks_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.issueBooks_btn.Location = new System.Drawing.Point(8, 307);
+            this.issueBooks_btn.Location = new System.Drawing.Point(8, 311);
             this.issueBooks_btn.Name = "issueBooks_btn";
             this.issueBooks_btn.Size = new System.Drawing.Size(200, 50);
             this.issueBooks_btn.TabIndex = 6;
@@ -168,7 +171,7 @@
             this.addBooks_btn.ForeColor = System.Drawing.Color.White;
             this.addBooks_btn.Image = global::LibraTrack.Properties.Resources.add_book;
             this.addBooks_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addBooks_btn.Location = new System.Drawing.Point(8, 249);
+            this.addBooks_btn.Location = new System.Drawing.Point(8, 248);
             this.addBooks_btn.Name = "addBooks_btn";
             this.addBooks_btn.Size = new System.Drawing.Size(200, 50);
             this.addBooks_btn.TabIndex = 5;
@@ -186,7 +189,7 @@
             this.dashboard_btn.ForeColor = System.Drawing.Color.White;
             this.dashboard_btn.Image = global::LibraTrack.Properties.Resources.Dash_board;
             this.dashboard_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.dashboard_btn.Location = new System.Drawing.Point(8, 189);
+            this.dashboard_btn.Location = new System.Drawing.Point(8, 186);
             this.dashboard_btn.Name = "dashboard_btn";
             this.dashboard_btn.Size = new System.Drawing.Size(200, 50);
             this.dashboard_btn.TabIndex = 4;
@@ -306,6 +309,24 @@
             this.panelMain.Size = new System.Drawing.Size(1180, 660);
             this.panelMain.TabIndex = 2;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(218, 658);
+            this.panel3.TabIndex = 11;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.logout_btn);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 576);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(218, 82);
+            this.panel4.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -326,6 +347,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -349,5 +372,7 @@
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Button analytics_btn;
         private System.Windows.Forms.Button request_btn;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }

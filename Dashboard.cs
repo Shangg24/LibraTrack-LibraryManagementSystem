@@ -26,21 +26,24 @@ namespace LibraTrack
 
             try
             {
+                string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+
                 Label lbl = new Label
                 {
                     AutoSize = true,
-                    Text = message,
+                    Text = $"{date} - {message}",
                     Font = new Font("Segoe UI", 10, FontStyle.Regular),
                     ForeColor = Color.Black,
                     BackColor = Color.Transparent,
                     Margin = new Padding(6)
                 };
+
                 if (recentActivityPanel == null) return;
 
                 recentActivityPanel.Controls.Add(lbl);
 
                 if (newestOnTop)
-                    recentActivityPanel.Controls.SetChildIndex(lbl, 0);
+                    recentActivityPanel.Controls.SetChildIndex(lbl, 1);
             }
             catch { }
         }

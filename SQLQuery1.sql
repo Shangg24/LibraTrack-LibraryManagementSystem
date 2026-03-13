@@ -11,6 +11,7 @@ SELECT * FROM issues;
 
 SELECT * FROM ActivityLog;
 
+SELECT * FROM students;
 
 SELECT * FROM BookCopies;
 
@@ -22,9 +23,20 @@ SELECT * FROM book_requests;
 
 SELECT DISTINCT status FROM books;
 
+SELECT COLUMN_NAME
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'BookCopies';
+
 SELECT COLUMN_NAME, DATA_TYPE
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'issue_books';
+
+SELECT DISTINCT status
+FROM book_requests;
+
+SELECT request_id, ID_no, book_id, status
+FROM book_requests
+WHERE ID_no = 'STUDENT_ID_HERE';
 
 
 SELECT DISTINCT status FROM issues
@@ -37,6 +49,10 @@ AND date_delete IS NULL
 
 SELECT DISTINCT status FROM issues;
 
+SELECT issue_id, issue_date, return_date, status
+FROM issues
+WHERE status = 'Issued'
+AND return_date < GETDATE()
 
 USE [C:\USERS\ADMINISTRATOR\DOCUMENTS\LIBRATRACK.MDF];
 SELECT DISTINCT status FROM issues;
@@ -73,6 +89,15 @@ WHERE parent_object_id = OBJECT_ID('issues');
 
 SELECT TOP 10 * FROM books;
 
+EXEC sp_help book_requests;
+
+SELECT * 
+FROM INFORMATION_SCHEMA.CHECK_CONSTRAINTS
+WHERE CONSTRAINT_NAME LIKE '%book_requests%';
+
+SELECT request_id, status
+FROM book_requests
+
 
 SELECT TOP 10 * FROM BookCopies;
 
@@ -86,6 +111,7 @@ SELECT COLUMN_NAME
 FROM INFORMATION_SCHEMA.COLUMNS 
 WHERE TABLE_NAME = 'issues';
 
+EXEC sp_rename 'Students.password', 'passwordHash', 'COLUMN';
 
 
 SELECT TABLE_NAME
@@ -312,8 +338,21 @@ UPDATE BookCopies SET Status = 'Returned' WHERE CopyID = @copyId
 UPDATE Books SET status = 'Returned' WHERE id = @id;
 
 
+UPDATE book_requests
+SET status = 'Reserved'
+WHERE status = 'Approved';
+
+UPDATE book_requests
+SET status = 'Borrowed'
+WHERE status = 'Reserved'
+
+
 /**----------------------------------------------------------------------**/
 /**ALTER**/
+
+ALTER TABLE students
+ADD username NVARCHAR(50),
+contact NVARCHAR(20);
 
 ALTER DATABASE LibraTrack SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
 
@@ -344,6 +383,9 @@ ADD category NVARCHAR(100),
 ALTER TABLE issues
 ADD copy_id NVARCHAR(20) NULL; -- new column
 
+
+ALTER TABLE students
+ADD IsActive BIT NOT NULL DEFAULT 1;
 
 ALTER TABLE BookCopies
 ADD CONSTRAINT FK_BookCopies_Books

@@ -406,6 +406,7 @@ namespace LibraTrack
             }
             LoadAllBooks();
             DisplayBookIssueData();
+            
         }
 
 
@@ -567,35 +568,62 @@ namespace LibraTrack
                         // INSERT BOOKS
                         foreach (DataGridViewRow row in dataGridViewBooksToBorrow.Rows)
                         {
-                            string bookId = row.Cells["BookId"].Value.ToString();
+                            string formattedBookId = row.Cells["BookId"].Value.ToString();
 
                             using (SqlCommand cmd = new SqlCommand(
                                 "INSERT INTO issue_books(issue_id, book_id) VALUES(@iid, @bid)",
                                 con, tx))
                             {
                                 cmd.Parameters.AddWithValue("@iid", issueId);
-                                cmd.Parameters.AddWithValue("@bid", bookId);
+                                cmd.Parameters.AddWithValue("@bid", formattedBookId);
                                 cmd.ExecuteNonQuery();
                             }
 
                             using (SqlCommand cmd = new SqlCommand(
-                                @"UPDATE Books SET available = available - 1,
+                                @"UPDATE Books 
+                                SET available = available - 1,
                                 status = CASE 
-                                    WHEN available - 1 = 0 THEN 'Not Available' 
-                                    ELSE 'Available' 
+                                WHEN available - 1 = 0 THEN 'Not Available' 
+                                ELSE 'Available' 
                                 END
                                 WHERE id = @id AND available > 0",
                                 con, tx))
                             {
-                                cmd.Parameters.AddWithValue("@id", bookId);
+                                cmd.Parameters.AddWithValue("@id", formattedBookId);
                                 cmd.ExecuteNonQuery();
                             }
+
+                            using (SqlCommand updateRequest = new SqlCommand(
+                                @"UPDATE book_requests 
+                                SET status = 'Borrowed'
+                                WHERE book_id = @bookId
+                                AND ID_no = @idno
+                                AND status = 'Reserved'",
+                                con, tx))
+                            {
+                                updateRequest.Parameters.AddWithValue("@bookId", formattedBookId);
+                                updateRequest.Parameters.AddWithValue("@idno", bookIssue_idNo.Text.Trim());
+                                updateRequest.ExecuteNonQuery();
+                            }
                         }
+
 
                         tx.Commit();
 
                         MessageBox.Show("Books issued successfully!");
 
+                        //Refresh Requests user control if open
+                        if (FindForm() is MainForm mainForm)
+                        {
+                            var requestControl = mainForm.Controls.Find("requests", true).FirstOrDefault() as BookRequests;
+                            
+                            if (requestControl != null)
+                            {
+                                requestControl.refreshData();
+                            }
+                        }
+
+                        LogActivity($"Issued books to {bookIssue_name.Text.Trim()} (ID: {bookIssue_idNo.Text.Trim()})");
                         dataGridViewBooksToBorrow.Rows.Clear();
                         bookIssue_id.Text = GenerateIssueID();
                         DisplayBookIssueData();
@@ -653,21 +681,82 @@ namespace LibraTrack
 
 
 
-        private void LoadIssuedBooks(string issueId)
+        private void dataGridViewBooksToBorrow_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridViewBooksToBorrow.Rows.Clear();
+            if (e.RowIndex < 0) return;
+
+            string bookId = dataGridViewBooksToBorrow.Rows[e.RowIndex].Cells["BookId"].Value.ToString();
+
             using (SqlConnection con = new SqlConnection(connect.ConnectionString))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand(@"SELECT b.id,b.book_title,b.author 
-                                                        FROM issue_books ib 
-                                                        INNER JOIN Books b ON b.id = ib.book_id 
-                                                        WHERE ib.issue_id=@id", con))
+
+                using (SqlCommand cmd = new SqlCommand(
+                "SELECT image FROM Books WHERE id=@id", con))
+                {
+                    cmd.Parameters.AddWithValue("@id", bookId);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        string imagePath = result.ToString();
+
+                        if (!string.IsNullOrEmpty(imagePath) && System.IO.File.Exists(imagePath))
+                        {
+                            bookIssue_picture.Image = Image.FromFile(imagePath);
+                        }
+                        else
+                        {
+                            bookIssue_picture.Image = null;
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        private void LoadIssuedBooks(string issueId)
+        {
+            dataGridViewBooksToBorrow.Rows.Clear();
+            bookIssue_picture.Image = null;
+
+            using (SqlConnection con = new SqlConnection(connect.ConnectionString))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(
+                @"SELECT b.id,b.book_title,b.author,b.image 
+                   FROM issue_books ib 
+                   INNER JOIN Books b ON b.id = ib.book_id 
+                   WHERE ib.issue_id=@id", con))
                 {
                     cmd.Parameters.AddWithValue("@id", issueId);
+
                     SqlDataReader rdr = cmd.ExecuteReader();
+
+                    bool firstImageLoaded = false;
+
                     while (rdr.Read())
-                        dataGridViewBooksToBorrow.Rows.Add(rdr["id"], rdr["book_title"], rdr["author"]);
+                    {
+                        dataGridViewBooksToBorrow.Rows.Add(
+                            rdr["id"],
+                            rdr["book_title"],
+                            rdr["author"]
+                        );
+
+                        if (!firstImageLoaded)
+                        {
+                            string imagePath = rdr["image"]?.ToString();
+
+                            if (!string.IsNullOrEmpty(imagePath) && System.IO.File.Exists(imagePath))
+                            {
+                                bookIssue_picture.Image = Image.FromFile(imagePath);
+                                firstImageLoaded = true;
+                            }
+                        }
+                    }
                 }
             }
         }
