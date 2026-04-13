@@ -303,7 +303,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(10, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(5);
+            this.panel3.Padding = new System.Windows.Forms.Padding(10);
             this.panel3.Size = new System.Drawing.Size(1162, 310);
             this.panel3.TabIndex = 12;
             // 
@@ -326,7 +326,7 @@
             this.dataGridViewIssueBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewIssueBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewIssueBooks.EnableHeadersVisualStyles = false;
-            this.dataGridViewIssueBooks.Location = new System.Drawing.Point(5, 66);
+            this.dataGridViewIssueBooks.Location = new System.Drawing.Point(10, 71);
             this.dataGridViewIssueBooks.Name = "dataGridViewIssueBooks";
             this.dataGridViewIssueBooks.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -340,7 +340,7 @@
             this.dataGridViewIssueBooks.RowHeadersVisible = false;
             this.dataGridViewIssueBooks.RowHeadersWidth = 51;
             this.dataGridViewIssueBooks.RowTemplate.Height = 24;
-            this.dataGridViewIssueBooks.Size = new System.Drawing.Size(1152, 239);
+            this.dataGridViewIssueBooks.Size = new System.Drawing.Size(1142, 229);
             this.dataGridViewIssueBooks.TabIndex = 2;
             this.dataGridViewIssueBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewIssueBooks_CellClick_1);
             // 
@@ -350,9 +350,9 @@
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.bookIssue_search);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(5, 5);
+            this.panel4.Location = new System.Drawing.Point(10, 10);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1152, 61);
+            this.panel4.Size = new System.Drawing.Size(1142, 61);
             this.panel4.TabIndex = 13;
             // 
             // label1
@@ -360,7 +360,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.Location = new System.Drawing.Point(7, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 28);
             this.label1.TabIndex = 12;
@@ -371,7 +371,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(817, 17);
+            this.label11.Location = new System.Drawing.Point(807, 17);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 24);
             this.label11.TabIndex = 14;
@@ -381,7 +381,7 @@
             // 
             this.bookIssue_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bookIssue_search.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bookIssue_search.Location = new System.Drawing.Point(905, 14);
+            this.bookIssue_search.Location = new System.Drawing.Point(895, 14);
             this.bookIssue_search.Name = "bookIssue_search";
             this.bookIssue_search.Size = new System.Drawing.Size(231, 32);
             this.bookIssue_search.TabIndex = 13;
@@ -401,8 +401,8 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel8.Controls.Add(this.panel6);
             this.panel8.Controls.Add(this.panel7);
+            this.panel8.Controls.Add(this.panel6);
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(402, 10);
@@ -587,7 +587,8 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(5, 46);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(767, 287);
+            this.panel7.Padding = new System.Windows.Forms.Padding(10);
+            this.panel7.Size = new System.Drawing.Size(767, 140);
             this.panel7.TabIndex = 0;
             // 
             // dataGridViewBooksToBorrow
@@ -605,7 +606,7 @@
             this.dataGridViewBooksToBorrow.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewBooksToBorrow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBooksToBorrow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewBooksToBorrow.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewBooksToBorrow.Location = new System.Drawing.Point(10, 10);
             this.dataGridViewBooksToBorrow.MultiSelect = false;
             this.dataGridViewBooksToBorrow.Name = "dataGridViewBooksToBorrow";
             this.dataGridViewBooksToBorrow.ReadOnly = true;
@@ -613,7 +614,7 @@
             this.dataGridViewBooksToBorrow.RowHeadersWidth = 51;
             this.dataGridViewBooksToBorrow.RowTemplate.Height = 24;
             this.dataGridViewBooksToBorrow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBooksToBorrow.Size = new System.Drawing.Size(767, 287);
+            this.dataGridViewBooksToBorrow.Size = new System.Drawing.Size(747, 120);
             this.dataGridViewBooksToBorrow.TabIndex = 34;
             this.dataGridViewBooksToBorrow.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooksToBorrow_CellClick);
             // 

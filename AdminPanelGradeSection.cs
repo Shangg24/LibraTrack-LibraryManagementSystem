@@ -25,6 +25,7 @@ namespace LibraTrack
             LoadDepartments();
 
             dataGridViewGradeSection.CellClick += dataGridViewGradeSection_CellClick;
+            dataGridViewGradeSection.ScrollBars = ScrollBars.Both;
         }
 
 

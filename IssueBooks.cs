@@ -51,6 +51,9 @@ namespace LibraTrack
             // Setup book suggestion listbox events
             bookIssue_bookTitleSearch.KeyDown += bookIssue_bookTitleSearch_KeyDown;
 
+            dataGridViewIssueBooks.ScrollBars = ScrollBars.Both;
+            dataGridViewBooksToBorrow.ScrollBars = ScrollBars.Both;
+
             LoadAllBooks();
             LoadGradeSections();
             DisplayBookIssueData();

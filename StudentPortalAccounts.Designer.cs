@@ -102,7 +102,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewStudentsPortal.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewStudentsPortal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewStudentsPortal.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewStudentsPortal.Location = new System.Drawing.Point(10, 10);
             this.dataGridViewStudentsPortal.Name = "dataGridViewStudentsPortal";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -121,7 +121,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewStudentsPortal.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewStudentsPortal.RowTemplate.Height = 24;
-            this.dataGridViewStudentsPortal.Size = new System.Drawing.Size(577, 526);
+            this.dataGridViewStudentsPortal.Size = new System.Drawing.Size(557, 506);
             this.dataGridViewStudentsPortal.TabIndex = 1;
             this.dataGridViewStudentsPortal.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStudentsPortal_CellClick);
             this.dataGridViewStudentsPortal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStudentsPortal_CellContentClick);
@@ -351,6 +351,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(10, 94);
             this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(10);
             this.panel5.Size = new System.Drawing.Size(577, 526);
             this.panel5.TabIndex = 40;
             // 

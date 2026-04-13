@@ -29,6 +29,9 @@ namespace LibraTrack
             dataGridViewBorrowedBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewBorrowedBooks.MultiSelect = true;
             dataGridViewBorrowedBooks.ReadOnly = true;
+
+            dataGridViewReturnBooks.ScrollBars = ScrollBars.Both;
+            dataGridViewBorrowedBooks.ScrollBars = ScrollBars.Both;
         }
 
         public void refreshData() //TO REFRESH THE ISSUED BOOKS LIST

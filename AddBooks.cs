@@ -27,6 +27,7 @@ namespace LibraTrack
             dataGridViewAddBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewAddBooks.MultiSelect = false;
             dataGridViewAddBooks.ReadOnly = true;
+            dataGridViewAddBooks.ScrollBars = ScrollBars.Both;
         }
         public void refreshData()
         {

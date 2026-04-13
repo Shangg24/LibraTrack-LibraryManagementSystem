@@ -48,6 +48,7 @@
             // dataGridViewRequests
             // 
             this.dataGridViewRequests.AllowUserToAddRows = false;
+            this.dataGridViewRequests.AllowUserToDeleteRows = false;
             this.dataGridViewRequests.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewRequests.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewRequests.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -62,15 +63,14 @@
             this.dataGridViewRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRequests.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewRequests.EnableHeadersVisualStyles = false;
-            this.dataGridViewRequests.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewRequests.MultiSelect = false;
+            this.dataGridViewRequests.Location = new System.Drawing.Point(10, 10);
             this.dataGridViewRequests.Name = "dataGridViewRequests";
             this.dataGridViewRequests.ReadOnly = true;
             this.dataGridViewRequests.RowHeadersVisible = false;
             this.dataGridViewRequests.RowHeadersWidth = 51;
             this.dataGridViewRequests.RowTemplate.Height = 24;
             this.dataGridViewRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewRequests.Size = new System.Drawing.Size(1184, 565);
+            this.dataGridViewRequests.Size = new System.Drawing.Size(1164, 433);
             this.dataGridViewRequests.TabIndex = 0;
             this.dataGridViewRequests.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewRequests_CellFormatting);
             // 
@@ -130,8 +130,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -152,11 +152,14 @@
             // 
             // panel4
             // 
+            this.panel4.AutoScroll = true;
+            this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.dataGridViewRequests);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 100);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1184, 565);
+            this.panel4.Padding = new System.Windows.Forms.Padding(10);
+            this.panel4.Size = new System.Drawing.Size(1184, 453);
             this.panel4.TabIndex = 6;
             // 
             // panel2

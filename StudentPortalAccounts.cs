@@ -22,6 +22,8 @@ namespace LibraTrack
             spa_userName.ReadOnly = true;
             dataGridViewStudentsPortal.EnableHeadersVisualStyles = false;
             dataGridViewStudentsPortal.RowPrePaint += dataGridViewStudentsPortal_RowPrePaint;
+
+            dataGridViewStudentsPortal.ScrollBars = ScrollBars.Both;
         }
 
         private void stp_create_btn_Click(object sender, EventArgs e)

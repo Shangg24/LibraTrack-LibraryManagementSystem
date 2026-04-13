@@ -265,6 +265,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(10, 69);
             this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(10);
             this.panel2.Size = new System.Drawing.Size(942, 341);
             this.panel2.TabIndex = 17;
             // 
@@ -287,7 +288,7 @@
             this.dataGridViewUsers.ContextMenuStrip = this.adminPanelAccount_contextMenu;
             this.dataGridViewUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewUsers.EnableHeadersVisualStyles = false;
-            this.dataGridViewUsers.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewUsers.Location = new System.Drawing.Point(10, 10);
             this.dataGridViewUsers.Name = "dataGridViewUsers";
             this.dataGridViewUsers.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -301,7 +302,7 @@
             this.dataGridViewUsers.RowHeadersVisible = false;
             this.dataGridViewUsers.RowHeadersWidth = 51;
             this.dataGridViewUsers.RowTemplate.Height = 24;
-            this.dataGridViewUsers.Size = new System.Drawing.Size(942, 341);
+            this.dataGridViewUsers.Size = new System.Drawing.Size(922, 321);
             this.dataGridViewUsers.TabIndex = 1;
             this.dataGridViewUsers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewUsers_CellFormatting);
             this.dataGridViewUsers.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridViewUsers_MouseDown);

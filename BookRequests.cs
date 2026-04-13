@@ -24,6 +24,8 @@ namespace LibraTrack
             InitializeComponent();
             dataGridViewRequests.CellFormatting += dataGridViewRequests_CellFormatting;
 
+
+
         }
 
         public void LoadRequests()

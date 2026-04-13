@@ -19,6 +19,7 @@ namespace LibraTrack
         public AnalyticsUserControl()
         {
             InitializeComponent();
+            dataGridViewPrediction.ScrollBars = ScrollBars.Both;
         }
 
 

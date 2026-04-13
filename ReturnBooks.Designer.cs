@@ -243,6 +243,7 @@
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid.Location = new System.Drawing.Point(10, 74);
             this.panelGrid.Name = "panelGrid";
+            this.panelGrid.Padding = new System.Windows.Forms.Padding(10);
             this.panelGrid.Size = new System.Drawing.Size(769, 559);
             this.panelGrid.TabIndex = 14;
             // 
@@ -265,7 +266,7 @@
             this.dataGridViewReturnBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReturnBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewReturnBooks.EnableHeadersVisualStyles = false;
-            this.dataGridViewReturnBooks.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewReturnBooks.Location = new System.Drawing.Point(10, 10);
             this.dataGridViewReturnBooks.Name = "dataGridViewReturnBooks";
             this.dataGridViewReturnBooks.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -279,7 +280,7 @@
             this.dataGridViewReturnBooks.RowHeadersVisible = false;
             this.dataGridViewReturnBooks.RowHeadersWidth = 51;
             this.dataGridViewReturnBooks.RowTemplate.Height = 24;
-            this.dataGridViewReturnBooks.Size = new System.Drawing.Size(769, 559);
+            this.dataGridViewReturnBooks.Size = new System.Drawing.Size(749, 539);
             this.dataGridViewReturnBooks.TabIndex = 3;
             this.dataGridViewReturnBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewReturnBooks_CellClick);
             this.dataGridViewReturnBooks.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewReturnBooks_CellFormatting);
@@ -355,6 +356,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 46);
             this.panel6.Name = "panel6";
+            this.panel6.Padding = new System.Windows.Forms.Padding(10);
             this.panel6.Size = new System.Drawing.Size(791, 173);
             this.panel6.TabIndex = 2;
             // 
@@ -373,12 +375,12 @@
             this.dataGridViewBorrowedBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewBorrowedBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBorrowedBooks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewBorrowedBooks.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewBorrowedBooks.Location = new System.Drawing.Point(10, 10);
             this.dataGridViewBorrowedBooks.Name = "dataGridViewBorrowedBooks";
             this.dataGridViewBorrowedBooks.RowHeadersVisible = false;
             this.dataGridViewBorrowedBooks.RowHeadersWidth = 51;
             this.dataGridViewBorrowedBooks.RowTemplate.Height = 24;
-            this.dataGridViewBorrowedBooks.Size = new System.Drawing.Size(791, 173);
+            this.dataGridViewBorrowedBooks.Size = new System.Drawing.Size(771, 153);
             this.dataGridViewBorrowedBooks.TabIndex = 0;
             this.dataGridViewBorrowedBooks.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewBorrowedBooks_CellFormatting);
             // 
