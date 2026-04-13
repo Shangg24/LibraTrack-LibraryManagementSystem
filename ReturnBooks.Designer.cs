@@ -234,7 +234,7 @@
             this.panel2.Location = new System.Drawing.Point(383, 10);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.panel2.Size = new System.Drawing.Size(791, 645);
+            this.panel2.Size = new System.Drawing.Size(791, 426);
             this.panel2.TabIndex = 1;
             // 
             // panelGrid
@@ -244,7 +244,7 @@
             this.panelGrid.Location = new System.Drawing.Point(10, 74);
             this.panelGrid.Name = "panelGrid";
             this.panelGrid.Padding = new System.Windows.Forms.Padding(10);
-            this.panelGrid.Size = new System.Drawing.Size(769, 559);
+            this.panelGrid.Size = new System.Drawing.Size(769, 340);
             this.panelGrid.TabIndex = 14;
             // 
             // dataGridViewReturnBooks
@@ -280,7 +280,7 @@
             this.dataGridViewReturnBooks.RowHeadersVisible = false;
             this.dataGridViewReturnBooks.RowHeadersWidth = 51;
             this.dataGridViewReturnBooks.RowTemplate.Height = 24;
-            this.dataGridViewReturnBooks.Size = new System.Drawing.Size(749, 539);
+            this.dataGridViewReturnBooks.Size = new System.Drawing.Size(749, 320);
             this.dataGridViewReturnBooks.TabIndex = 3;
             this.dataGridViewReturnBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewReturnBooks_CellClick);
             this.dataGridViewReturnBooks.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewReturnBooks_CellFormatting);
@@ -329,8 +329,8 @@
             // 
             // returnBooks_mainPanel
             // 
-            this.returnBooks_mainPanel.Controls.Add(this.panel4);
             this.returnBooks_mainPanel.Controls.Add(this.panel2);
+            this.returnBooks_mainPanel.Controls.Add(this.panel4);
             this.returnBooks_mainPanel.Controls.Add(this.panel1);
             this.returnBooks_mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.returnBooks_mainPanel.Location = new System.Drawing.Point(0, 0);
