@@ -72,6 +72,8 @@
             // Students_btn
             // 
             this.Students_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Students_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.Students_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
             this.Students_btn.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Students_btn.ForeColor = System.Drawing.SystemColors.Control;
             this.Students_btn.Location = new System.Drawing.Point(26, 414);
@@ -85,6 +87,8 @@
             // GradeSection_btn
             // 
             this.GradeSection_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.GradeSection_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.GradeSection_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
             this.GradeSection_btn.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GradeSection_btn.ForeColor = System.Drawing.SystemColors.Control;
             this.GradeSection_btn.Location = new System.Drawing.Point(26, 332);
@@ -98,6 +102,8 @@
             // RegisteredAccounts_btn
             // 
             this.RegisteredAccounts_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.RegisteredAccounts_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.RegisteredAccounts_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
             this.RegisteredAccounts_btn.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisteredAccounts_btn.ForeColor = System.Drawing.SystemColors.Control;
             this.RegisteredAccounts_btn.Location = new System.Drawing.Point(26, 250);
@@ -121,7 +127,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::LibraTrack.Properties.Resources.Logo;
+            this.pictureBox1.Image = global::LibraTrack.Properties.Resources.LibraTrackLogo;
             this.pictureBox1.Location = new System.Drawing.Point(62, 71);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);

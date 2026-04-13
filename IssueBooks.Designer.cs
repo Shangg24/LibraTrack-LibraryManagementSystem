@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bookIssue_clearBtn = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -288,11 +289,11 @@
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
-            this.panel2.Size = new System.Drawing.Size(1184, 326);
+            this.panel2.Size = new System.Drawing.Size(1184, 322);
             this.panel2.TabIndex = 1;
             // 
             // panel3
@@ -303,7 +304,7 @@
             this.panel3.Location = new System.Drawing.Point(10, 0);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(1162, 314);
+            this.panel3.Size = new System.Drawing.Size(1162, 310);
             this.panel3.TabIndex = 12;
             // 
             // dataGridViewIssueBooks
@@ -314,9 +315,9 @@
             this.dataGridViewIssueBooks.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewIssueBooks.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewIssueBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
@@ -339,7 +340,7 @@
             this.dataGridViewIssueBooks.RowHeadersVisible = false;
             this.dataGridViewIssueBooks.RowHeadersWidth = 51;
             this.dataGridViewIssueBooks.RowTemplate.Height = 24;
-            this.dataGridViewIssueBooks.Size = new System.Drawing.Size(1152, 243);
+            this.dataGridViewIssueBooks.Size = new System.Drawing.Size(1152, 239);
             this.dataGridViewIssueBooks.TabIndex = 2;
             this.dataGridViewIssueBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewIssueBooks_CellClick_1);
             // 
@@ -370,7 +371,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(822, 17);
+            this.label11.Location = new System.Drawing.Point(817, 17);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 24);
             this.label11.TabIndex = 14;
@@ -592,13 +593,23 @@
             // dataGridViewBooksToBorrow
             // 
             this.dataGridViewBooksToBorrow.AllowUserToAddRows = false;
+            this.dataGridViewBooksToBorrow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewBooksToBorrow.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewBooksToBorrow.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewBooksToBorrow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBooksToBorrow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewBooksToBorrow.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewBooksToBorrow.MultiSelect = false;
             this.dataGridViewBooksToBorrow.Name = "dataGridViewBooksToBorrow";
             this.dataGridViewBooksToBorrow.ReadOnly = true;
+            this.dataGridViewBooksToBorrow.RowHeadersVisible = false;
             this.dataGridViewBooksToBorrow.RowHeadersWidth = 51;
             this.dataGridViewBooksToBorrow.RowTemplate.Height = 24;
             this.dataGridViewBooksToBorrow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

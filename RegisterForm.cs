@@ -65,13 +65,15 @@ namespace LibraTrack
 
                                 String insertData = "INSERT INTO users (email, id_number, role, username, password, date_register) " + "VALUES(@email, @idnumber, @role, @username, @password, @date)";
 
+                                string hashedPassword = PasswordHelper.HashPassword(register_IDNumber.Text);
+
                                 using (SqlCommand insertCMD = new SqlCommand(insertData, connect))
                                 {
                                     insertCMD.Parameters.AddWithValue("@email", register_email.Text.Trim());
                                     insertCMD.Parameters.AddWithValue("@idnumber", register_IDNumber.Text.Trim());
                                     insertCMD.Parameters.AddWithValue("@role", register_role.Text.Trim());
                                     insertCMD.Parameters.AddWithValue("@username", register_username.Text.Trim());
-                                    insertCMD.Parameters.AddWithValue("@password", register_password.Text.Trim());
+                                    insertCMD.Parameters.AddWithValue("@password", hashedPassword);
                                     insertCMD.Parameters.AddWithValue("@date", day.ToString());
 
                                     insertCMD.ExecuteNonQuery();

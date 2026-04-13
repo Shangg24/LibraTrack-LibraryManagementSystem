@@ -52,11 +52,14 @@ namespace LibraTrack
                     connect.Open();
 
                     // username + password, role + status
-                    String selectData = "SELECT role, status FROM users WHERE username = @username AND password = @password";
+                    String selectData = @"SELECT id, role, status, IsFirstLogin FROM users WHERE username COLLATE SQL_Latin1_General_CP1_CS_AS = @username AND password COLLATE SQL_Latin1_General_CP1_CS_AS = @password";
+
+                    string hashedPassword = PasswordHelper.HashPassword(login_password.Text.Trim());
+
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
                         cmd.Parameters.AddWithValue("@username", login_username.Text.Trim());
-                        cmd.Parameters.AddWithValue("@password", login_password.Text.Trim());
+                        cmd.Parameters.AddWithValue("@password", hashedPassword);
 
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable table = new DataTable();
@@ -66,6 +69,9 @@ namespace LibraTrack
                         {
                             string role = table.Rows[0]["role"].ToString().Trim();
                             string status = table.Rows[0]["status"].ToString().Trim();
+
+                            int userId = Convert.ToInt32(table.Rows[0]["id"]);
+                            bool isFirstLogin = Convert.ToBoolean(table.Rows[0]["IsFirstLogin"]);
 
                             // ✅ Role check
                             if (!role.Equals("Admin", StringComparison.OrdinalIgnoreCase) &&
@@ -86,7 +92,16 @@ namespace LibraTrack
 
                             MessageBox.Show("Login Successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // ✅ Redirect based on role
+                            // 🔥 FIRST LOGIN CHECK
+                            if (isFirstLogin)
+                            {
+                                ChangePasswordForm cp = new ChangePasswordForm(userId);
+                                cp.Show();
+                                this.Hide();
+                                return;
+                            }
+
+                            // ✅ Normal redirect
                             if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase) ||
                                 role.Equals("IT", StringComparison.OrdinalIgnoreCase))
                             {
@@ -95,7 +110,7 @@ namespace LibraTrack
                             }
                             else if (role.Equals("Librarian", StringComparison.OrdinalIgnoreCase))
                             {
-                                MainForm mForm = new MainForm(); // Dashboard
+                                MainForm mForm = new MainForm();
                                 mForm.Show();
                             }
 
@@ -104,6 +119,11 @@ namespace LibraTrack
                         else
                         {
                             MessageBox.Show("Incorrect Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            login_username.Clear();
+                            login_password.Clear();
+
+                            login_username.Focus();
                         }
                     }
                 }

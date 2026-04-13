@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.request_btn = new System.Windows.Forms.Button();
-            this.analytics_btn = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.logout_btn = new System.Windows.Forms.Button();
+            this.analytics_btn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.returnBooks_btn = new System.Windows.Forms.Button();
+            this.greet_label = new System.Windows.Forms.Label();
             this.issueBooks_btn = new System.Windows.Forms.Button();
             this.addBooks_btn = new System.Windows.Forms.Button();
             this.dashboard_btn = new System.Windows.Forms.Button();
-            this.greet_label = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.mainForm_exitBtn = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,34 +49,41 @@
             this.mainForm_maximizeBtn = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.request_btn);
-            this.panel2.Controls.Add(this.analytics_btn);
-            this.panel2.Controls.Add(this.returnBooks_btn);
-            this.panel2.Controls.Add(this.issueBooks_btn);
-            this.panel2.Controls.Add(this.addBooks_btn);
-            this.panel2.Controls.Add(this.dashboard_btn);
-            this.panel2.Controls.Add(this.greet_label);
-            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 40);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(220, 660);
             this.panel2.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.request_btn);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.analytics_btn);
+            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Controls.Add(this.returnBooks_btn);
+            this.panel3.Controls.Add(this.greet_label);
+            this.panel3.Controls.Add(this.issueBooks_btn);
+            this.panel3.Controls.Add(this.addBooks_btn);
+            this.panel3.Controls.Add(this.dashboard_btn);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(218, 658);
+            this.panel3.TabIndex = 11;
             // 
             // request_btn
             // 
@@ -84,8 +94,9 @@
             this.request_btn.ForeColor = System.Drawing.Color.White;
             this.request_btn.Image = global::LibraTrack.Properties.Resources.icons8_ask_question_32;
             this.request_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.request_btn.Location = new System.Drawing.Point(8, 436);
+            this.request_btn.Location = new System.Drawing.Point(8, 445);
             this.request_btn.Name = "request_btn";
+            this.request_btn.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.request_btn.Size = new System.Drawing.Size(200, 50);
             this.request_btn.TabIndex = 10;
             this.request_btn.Text = "REQUESTS";
@@ -93,23 +104,14 @@
             this.request_btn.UseVisualStyleBackColor = false;
             this.request_btn.Click += new System.EventHandler(this.request_btn_Click);
             // 
-            // analytics_btn
+            // panel4
             // 
-            this.analytics_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.analytics_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.analytics_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
-            this.analytics_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.analytics_btn.ForeColor = System.Drawing.Color.White;
-            this.analytics_btn.Image = global::LibraTrack.Properties.Resources.icons8_analytics_32;
-            this.analytics_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.analytics_btn.Location = new System.Drawing.Point(8, 499);
-            this.analytics_btn.Name = "analytics_btn";
-            this.analytics_btn.Size = new System.Drawing.Size(200, 50);
-            this.analytics_btn.TabIndex = 9;
-            this.analytics_btn.Text = "ANALYTICS";
-            this.analytics_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.analytics_btn.UseVisualStyleBackColor = false;
-            this.analytics_btn.Click += new System.EventHandler(this.analytics_btn_Click);
+            this.panel4.Controls.Add(this.logout_btn);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 594);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(218, 64);
+            this.panel4.TabIndex = 0;
             // 
             // logout_btn
             // 
@@ -126,6 +128,35 @@
             this.logout_btn.UseVisualStyleBackColor = true;
             this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
             // 
+            // analytics_btn
+            // 
+            this.analytics_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.analytics_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.analytics_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            this.analytics_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.analytics_btn.ForeColor = System.Drawing.Color.White;
+            this.analytics_btn.Image = global::LibraTrack.Properties.Resources.icons8_analytics_32;
+            this.analytics_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.analytics_btn.Location = new System.Drawing.Point(8, 508);
+            this.analytics_btn.Name = "analytics_btn";
+            this.analytics_btn.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.analytics_btn.Size = new System.Drawing.Size(200, 50);
+            this.analytics_btn.TabIndex = 9;
+            this.analytics_btn.Text = "ANALYTICS";
+            this.analytics_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.analytics_btn.UseVisualStyleBackColor = false;
+            this.analytics_btn.Click += new System.EventHandler(this.analytics_btn_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LibraTrack.Properties.Resources.LibraTrackLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(52, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // returnBooks_btn
             // 
             this.returnBooks_btn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -135,14 +166,26 @@
             this.returnBooks_btn.ForeColor = System.Drawing.Color.White;
             this.returnBooks_btn.Image = global::LibraTrack.Properties.Resources.issue_book;
             this.returnBooks_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.returnBooks_btn.Location = new System.Drawing.Point(8, 373);
+            this.returnBooks_btn.Location = new System.Drawing.Point(8, 382);
             this.returnBooks_btn.Name = "returnBooks_btn";
+            this.returnBooks_btn.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.returnBooks_btn.Size = new System.Drawing.Size(200, 50);
             this.returnBooks_btn.TabIndex = 7;
             this.returnBooks_btn.Text = "RETURN BOOKS";
             this.returnBooks_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.returnBooks_btn.UseVisualStyleBackColor = false;
             this.returnBooks_btn.Click += new System.EventHandler(this.returnBooks_btn_Click);
+            // 
+            // greet_label
+            // 
+            this.greet_label.AutoSize = true;
+            this.greet_label.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.greet_label.ForeColor = System.Drawing.Color.White;
+            this.greet_label.Location = new System.Drawing.Point(53, 137);
+            this.greet_label.Name = "greet_label";
+            this.greet_label.Size = new System.Drawing.Size(99, 24);
+            this.greet_label.TabIndex = 3;
+            this.greet_label.Text = "Welcome!";
             // 
             // issueBooks_btn
             // 
@@ -153,8 +196,9 @@
             this.issueBooks_btn.ForeColor = System.Drawing.Color.White;
             this.issueBooks_btn.Image = global::LibraTrack.Properties.Resources.return_book;
             this.issueBooks_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.issueBooks_btn.Location = new System.Drawing.Point(8, 311);
+            this.issueBooks_btn.Location = new System.Drawing.Point(8, 320);
             this.issueBooks_btn.Name = "issueBooks_btn";
+            this.issueBooks_btn.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.issueBooks_btn.Size = new System.Drawing.Size(200, 50);
             this.issueBooks_btn.TabIndex = 6;
             this.issueBooks_btn.Text = "ISSUE BOOKS";
@@ -171,8 +215,9 @@
             this.addBooks_btn.ForeColor = System.Drawing.Color.White;
             this.addBooks_btn.Image = global::LibraTrack.Properties.Resources.add_book;
             this.addBooks_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addBooks_btn.Location = new System.Drawing.Point(8, 248);
+            this.addBooks_btn.Location = new System.Drawing.Point(8, 257);
             this.addBooks_btn.Name = "addBooks_btn";
+            this.addBooks_btn.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.addBooks_btn.Size = new System.Drawing.Size(200, 50);
             this.addBooks_btn.TabIndex = 5;
             this.addBooks_btn.Text = "ADD BOOKS";
@@ -189,35 +234,15 @@
             this.dashboard_btn.ForeColor = System.Drawing.Color.White;
             this.dashboard_btn.Image = global::LibraTrack.Properties.Resources.Dash_board;
             this.dashboard_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.dashboard_btn.Location = new System.Drawing.Point(8, 186);
+            this.dashboard_btn.Location = new System.Drawing.Point(8, 195);
             this.dashboard_btn.Name = "dashboard_btn";
+            this.dashboard_btn.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.dashboard_btn.Size = new System.Drawing.Size(200, 50);
             this.dashboard_btn.TabIndex = 4;
             this.dashboard_btn.Text = "DASHBOARD";
             this.dashboard_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.dashboard_btn.UseVisualStyleBackColor = false;
             this.dashboard_btn.Click += new System.EventHandler(this.dashboard_btn_Click);
-            // 
-            // greet_label
-            // 
-            this.greet_label.AutoSize = true;
-            this.greet_label.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.greet_label.ForeColor = System.Drawing.Color.White;
-            this.greet_label.Location = new System.Drawing.Point(56, 130);
-            this.greet_label.Name = "greet_label";
-            this.greet_label.Size = new System.Drawing.Size(99, 24);
-            this.greet_label.TabIndex = 3;
-            this.greet_label.Text = "Welcome!";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::LibraTrack.Properties.Resources.Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(55, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // mainForm_exitBtn
             // 
@@ -293,7 +318,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::LibraTrack.Properties.Resources.Logo;
+            this.pictureBox2.Image = global::LibraTrack.Properties.Resources.LibraTrackLogo;
             this.pictureBox2.Location = new System.Drawing.Point(8, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 32);
@@ -309,24 +334,6 @@
             this.panelMain.Size = new System.Drawing.Size(1180, 660);
             this.panelMain.TabIndex = 2;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(218, 658);
-            this.panel3.TabIndex = 11;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.logout_btn);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 576);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(218, 82);
-            this.panel4.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -336,19 +343,20 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

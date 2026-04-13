@@ -181,5 +181,46 @@ namespace LibraTrack
             gradeSection_section.Clear();
             gradeSection_department.SelectedIndex = 0;
         }
+
+        private void gradeSection_search_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(gradeSection_search.Text))
+            {
+                LoadGradeSections();
+                return;
+            }
+
+            try
+            {
+                connect.Open();
+
+                string query = @"SELECT id, department, grade_level, section 
+                         FROM GradeSections 
+                         WHERE is_active = 1 AND 
+                               (grade_level LIKE @search 
+                                OR section LIKE @search 
+                                OR department LIKE @search)
+                         ORDER BY grade_level, section";
+
+                SqlCommand cmd = new SqlCommand(query, connect);
+                cmd.Parameters.AddWithValue("@search", "%" + gradeSection_search.Text + "%");
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dataGridViewGradeSection.DataSource = dt;
+
+                dataGridViewGradeSection.Columns["id"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+            finally
+            {
+                connect.Close();
+            }
+        }
     }
 }

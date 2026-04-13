@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             this.register_showPass = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.signin_btn = new System.Windows.Forms.Button();
@@ -161,7 +160,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::LibraTrack.Properties.Resources.LibraTrackLogo;
             this.pictureBox1.Location = new System.Drawing.Point(164, 45);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);

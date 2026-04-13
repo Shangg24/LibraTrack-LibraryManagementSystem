@@ -28,31 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewRequests = new System.Windows.Forms.DataGridView();
             this.approve_btn = new System.Windows.Forms.Button();
             this.reject_btn = new System.Windows.Forms.Button();
             this.refresh_btn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRequests)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewRequests
             // 
+            this.dataGridViewRequests.AllowUserToAddRows = false;
             this.dataGridViewRequests.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewRequests.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridViewRequests.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRequests.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewRequests.EnableHeadersVisualStyles = false;
             this.dataGridViewRequests.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewRequests.MultiSelect = false;
             this.dataGridViewRequests.Name = "dataGridViewRequests";
             this.dataGridViewRequests.ReadOnly = true;
+            this.dataGridViewRequests.RowHeadersVisible = false;
             this.dataGridViewRequests.RowHeadersWidth = 51;
             this.dataGridViewRequests.RowTemplate.Height = 24;
             this.dataGridViewRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -125,6 +139,17 @@
             this.panel1.Size = new System.Drawing.Size(1184, 665);
             this.panel1.TabIndex = 5;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel3.Controls.Add(this.approve_btn);
+            this.panel3.Controls.Add(this.reject_btn);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 553);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1184, 112);
+            this.panel3.TabIndex = 1;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.dataGridViewRequests);
@@ -136,6 +161,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.Controls.Add(this.refresh_btn);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -143,16 +169,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1184, 100);
             this.panel2.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.approve_btn);
-            this.panel3.Controls.Add(this.reject_btn);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 553);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1184, 112);
-            this.panel3.TabIndex = 1;
             // 
             // BookRequests
             // 
@@ -164,10 +180,10 @@
             this.Load += new System.EventHandler(this.BookRequests_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRequests)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

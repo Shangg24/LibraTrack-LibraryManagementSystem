@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.returnBooks_bookIssue = new System.Windows.Forms.DateTimePicker();
             this.returnBooks_email = new System.Windows.Forms.TextBox();
@@ -253,9 +254,9 @@
             this.dataGridViewReturnBooks.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewReturnBooks.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewReturnBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
@@ -359,11 +360,22 @@
             // 
             // dataGridViewBorrowedBooks
             // 
+            this.dataGridViewBorrowedBooks.AllowUserToAddRows = false;
+            this.dataGridViewBorrowedBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewBorrowedBooks.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewBorrowedBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewBorrowedBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBorrowedBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewBorrowedBooks.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewBorrowedBooks.Name = "dataGridViewBorrowedBooks";
+            this.dataGridViewBorrowedBooks.RowHeadersVisible = false;
             this.dataGridViewBorrowedBooks.RowHeadersWidth = 51;
             this.dataGridViewBorrowedBooks.RowTemplate.Height = 24;
             this.dataGridViewBorrowedBooks.Size = new System.Drawing.Size(791, 173);

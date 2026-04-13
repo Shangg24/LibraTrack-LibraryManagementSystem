@@ -20,8 +20,8 @@ namespace LibraTrack
             InitializeComponent();
 
             spa_userName.ReadOnly = true;
+            dataGridViewStudentsPortal.EnableHeadersVisualStyles = false;
             dataGridViewStudentsPortal.RowPrePaint += dataGridViewStudentsPortal_RowPrePaint;
-            spa_password.ReadOnly = true;
         }
 
         private void stp_create_btn_Click(object sender, EventArgs e)
@@ -87,6 +87,13 @@ namespace LibraTrack
 
                 dataGridViewStudentsPortal.DataSource = dt;
 
+                dataGridViewStudentsPortal.EnableHeadersVisualStyles = false;
+
+                dataGridViewStudentsPortal.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
+                dataGridViewStudentsPortal.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dataGridViewStudentsPortal.ColumnHeadersDefaultCellStyle.Font =
+                    new Font("Arial Narrow", 9);
+
                 foreach (DataGridViewRow row in dataGridViewStudentsPortal.Rows)
                 {
                     if (row.Cells["IsActive"].Value != null)
@@ -129,7 +136,6 @@ namespace LibraTrack
             spa_email.Text = "";
             spa_contact.Text = "";
             spa_userName.Text = "";
-            spa_password.Text = "";
         }
 
         private void dataGridViewStudentsPortal_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -196,7 +202,7 @@ namespace LibraTrack
             if (connect.State == ConnectionState.Closed)
                 connect.Open();
 
-            string query = @"SELECT ID_no, full_name, email, contact, username
+            string query = @"SELECT ID_no, full_name, email, contact, username, IsActive
                      FROM Students
                      WHERE ID_no LIKE @k
                         OR full_name LIKE @k
@@ -226,7 +232,6 @@ namespace LibraTrack
                 spa_email.Text = row.Cells["email"].Value.ToString();
                 spa_contact.Text = row.Cells["contact"].Value.ToString();
                 spa_userName.Text = row.Cells["ID_no"].Value.ToString(); // username is same as ID
-                spa_password.Text = row.Cells["ID_no"].Value.ToString();
             }
         }
 

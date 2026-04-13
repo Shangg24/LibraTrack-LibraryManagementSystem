@@ -65,7 +65,7 @@ namespace LibraTrack
                 using (SqlConnection conn = new SqlConnection(connect.ConnectionString))
                 {
                     conn.Open();
-                    string query = @"SELECT id, id_number AS [ID Number], email AS [Email], username AS [Username], password AS [Password], role AS [Role], status AS [status], FORMAT(date_register, 'MM/dd/yyyy') AS [Date Registered] FROM users";
+                    string query = @"SELECT id, id_number AS [ID Number], email AS [Email], username AS [Username], role AS [Role], status AS [status], FORMAT(date_register, 'MM/dd/yyyy') AS [Date Registered] FROM users";
 
 
                     SqlDataAdapter sda = new SqlDataAdapter(query, conn);
@@ -95,7 +95,7 @@ namespace LibraTrack
                 {
                     conn.Open();
 
-                    string query = @"SELECT id, email, username, password, role, status, FORMAT(date_register, 'MM/dd/yyyy') AS date_register FROM users WHERE (id LIKE @keyword OR email LIKE @keyword OR username LIKE @keyword OR password LIKE @keyword OR role LIKE @keyword OR status LIKE @keyword OR FORMAT(date_register, 'MM/dd/yyyy') LIKE @keyword)";
+                    string query = @"SELECT id, email, username, role, status, FORMAT(date_register, 'MM/dd/yyyy') AS date_register FROM users WHERE (id LIKE @keyword OR email LIKE @keyword OR username LIKE @keyword OR role LIKE @keyword OR status LIKE @keyword OR FORMAT(date_register, 'MM/dd/yyyy') LIKE @keyword)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -131,7 +131,7 @@ namespace LibraTrack
         // ✅ Highlight color based on status
         private void dataGridViewUsers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dataGridViewUsers.Columns[e.ColumnIndex].Name == "status")
+            if (dataGridViewUsers.Columns[e.ColumnIndex].Name == "Status")
             {
                 if (e.Value != null)
                 {
@@ -303,13 +303,64 @@ namespace LibraTrack
 
                 adminPanelAccount_txtEmail.Text = row.Cells["Email"].Value?.ToString() ?? "";
                 adminPanelAccount_txtUsername.Text = row.Cells["Username"].Value?.ToString() ?? "";
-                adminPanelAccount_txtPassword.Text = row.Cells["Password"].Value?.ToString() ?? "";
                 adminPanelAccount_txtRole.Text = row.Cells["Role"].Value?.ToString() ?? "";
                 adminPanelAccount_txtStatus.Text = row.Cells["Status"].Value?.ToString() ?? "";
                 adminPanel_txtDateRegister.Text = row.Cells["Date Registered"].Value?.ToString() ?? "";
             }
         }
 
+        private void resetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewUsers.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a user.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("Reset this user's password?", "Confirm Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes) 
+                return;
+
+
+            int userId = Convert.ToInt32(dataGridViewUsers.SelectedRows[0].Cells["id"].Value);
+
+            using (SqlConnection conn = new SqlConnection(connect.ConnectionString))
+            {
+                conn.Open();
+
+                string defaultPass = PasswordHelper.HashPassword("libratrack0123");
+
+                string query = @"UPDATE users 
+                         SET password = @pass, IsFirstLogin = 1
+                         WHERE id = @id";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", userId);
+                    cmd.Parameters.AddWithValue("@pass", defaultPass);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            MessageBox.Show("Password reset successfully!");
+        }
+
+
+        private void dataGridViewUsers_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hit = dataGridViewUsers.HitTest(e.X, e.Y);
+
+                if (hit.RowIndex >= 0)
+                {
+                    dataGridViewUsers.ClearSelection();
+                    dataGridViewUsers.Rows[hit.RowIndex].Selected = true;
+                    dataGridViewUsers.CurrentCell = dataGridViewUsers.Rows[hit.RowIndex].Cells["ID Number"];
+                }
+            }
+        }
     }
 }
 

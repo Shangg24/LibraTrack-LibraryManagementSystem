@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dataGridViewAddBooks = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.addBooks_search = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.dataGridViewAddBooks = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.addBooks_status = new System.Windows.Forms.ComboBox();
@@ -59,16 +61,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.addBooks_mainPanel = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddBooks)).BeginInit();
+            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addBooks_picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCopies)).BeginInit();
             this.addBooks_mainPanel.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -83,6 +83,63 @@
             this.panel2.Padding = new System.Windows.Forms.Padding(10);
             this.panel2.Size = new System.Drawing.Size(824, 665);
             this.panel2.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dataGridViewAddBooks);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(10, 86);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(802, 567);
+            this.panel4.TabIndex = 15;
+            // 
+            // dataGridViewAddBooks
+            // 
+            this.dataGridViewAddBooks.AllowUserToAddRows = false;
+            this.dataGridViewAddBooks.AllowUserToDeleteRows = false;
+            this.dataGridViewAddBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewAddBooks.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridViewAddBooks.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAddBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewAddBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAddBooks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewAddBooks.EnableHeadersVisualStyles = false;
+            this.dataGridViewAddBooks.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewAddBooks.Name = "dataGridViewAddBooks";
+            this.dataGridViewAddBooks.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAddBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewAddBooks.RowHeadersVisible = false;
+            this.dataGridViewAddBooks.RowHeadersWidth = 51;
+            this.dataGridViewAddBooks.RowTemplate.Height = 24;
+            this.dataGridViewAddBooks.Size = new System.Drawing.Size(802, 567);
+            this.dataGridViewAddBooks.TabIndex = 1;
+            this.dataGridViewAddBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridViewAddBooks.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewAddBooks_CellFormatting);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.addBooks_search);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(10, 10);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(802, 76);
+            this.panel3.TabIndex = 14;
             // 
             // addBooks_search
             // 
@@ -105,50 +162,13 @@
             this.label11.TabIndex = 12;
             this.label11.Text = "Search:";
             // 
-            // dataGridViewAddBooks
-            // 
-            this.dataGridViewAddBooks.AllowUserToAddRows = false;
-            this.dataGridViewAddBooks.AllowUserToDeleteRows = false;
-            this.dataGridViewAddBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewAddBooks.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridViewAddBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAddBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewAddBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAddBooks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewAddBooks.EnableHeadersVisualStyles = false;
-            this.dataGridViewAddBooks.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewAddBooks.Name = "dataGridViewAddBooks";
-            this.dataGridViewAddBooks.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAddBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewAddBooks.RowHeadersVisible = false;
-            this.dataGridViewAddBooks.RowHeadersWidth = 51;
-            this.dataGridViewAddBooks.RowTemplate.Height = 24;
-            this.dataGridViewAddBooks.Size = new System.Drawing.Size(802, 567);
-            this.dataGridViewAddBooks.TabIndex = 1;
-            this.dataGridViewAddBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridViewAddBooks.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewAddBooks_CellFormatting);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(29, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 28);
+            this.label1.Size = new System.Drawing.Size(82, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Books";
             // 
@@ -455,26 +475,6 @@
             this.addBooks_mainPanel.Size = new System.Drawing.Size(1184, 665);
             this.addBooks_mainPanel.TabIndex = 14;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.addBooks_search);
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(10, 10);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(802, 76);
-            this.panel3.TabIndex = 14;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.dataGridViewAddBooks);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(10, 86);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(802, 567);
-            this.panel4.TabIndex = 15;
-            // 
             // AddBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -483,15 +483,15 @@
             this.Name = "AddBooks";
             this.Size = new System.Drawing.Size(1184, 665);
             this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddBooks)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addBooks_picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCopies)).EndInit();
             this.addBooks_mainPanel.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -261,6 +261,11 @@ AND COLUMN_NAME = 'id';
 
 EXEC sp_help 'books';
 
+SELECT name 
+FROM sys.default_constraints 
+WHERE parent_object_id = OBJECT_ID('users')
+AND parent_column_id = COLUMNPROPERTY(OBJECT_ID('users'), 'IsFirstLogin', 'ColumnId');
+
 
 /**----------------------------------------------------------------------**/
 /**CREATE**/
@@ -346,9 +351,20 @@ UPDATE book_requests
 SET status = 'Borrowed'
 WHERE status = 'Reserved'
 
+UPDATE users
+SET password = LOWER(CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', password), 2))
+
 
 /**----------------------------------------------------------------------**/
 /**ALTER**/
+
+
+ALTER TABLE users
+DROP CONSTRAINT DF__users__IsFirstLo__37C5420D;
+
+ALTER TABLE users
+ADD CONSTRAINT DF_users_IsFirstLogin DEFAULT 0 FOR IsFirstLogin;
+
 
 ALTER TABLE students
 ADD username NVARCHAR(50),
@@ -372,6 +388,9 @@ ADD CONSTRAINT DF_users_status DEFAULT 'Pending' FOR status;
 
 ALTER TABLE users
 ADD CONSTRAINT DF_users_role DEFAULT 'Librarian' FOR role;
+
+ALTER TABLE users
+ADD IsFirstLogin BIT DEFAULT 0;
 
 
 ALTER TABLE books
@@ -415,6 +434,9 @@ UPDATE BookCopies SET CopyID_New = CAST(CopyID AS VARCHAR(20));
 --Copy existing integer data into the new varchar column
 UPDATE BookCopies
 SET CopyID_New = CAST(CopyID AS VARCHAR(20));
+
+UPDATE users
+SET IsFirstLogin = 0;
 
 
 ALTER TABLE Books ADD available INT NOT NULL DEFAULT 0;

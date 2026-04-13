@@ -12,20 +12,24 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Administrator\Desktop\LibraTrackNewRelease\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <InstallUrl>http://localhost/</InstallUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -48,11 +52,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>LibraTrackLogo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>4B40A2C63F2CFB3DC56C9B5C6FABD577B6AFDA0F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>LibraTrack_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+	<Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -98,6 +118,7 @@
     <Compile Include="BookRequests.Designer.cs">
       <DependentUpon>BookRequests.cs</DependentUpon>
     </Compile>
+    
     <Compile Include="Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -137,6 +158,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+   <Compile Include="PasswordHelper.cs">
+    <SubType>Form</SubType>
+  </Compile>
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +226,7 @@
     <EmbeddedResource Include="StudentPortalAccounts.resx">
       <DependentUpon>StudentPortalAccounts.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LibraTrack_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\AddBooks.datasource" />
     <None Include="Properties\DataSources\AdminPanel.datasource" />
     <None Include="Properties\DataSources\AdminPanelAccounts.datasource" />
@@ -239,6 +264,8 @@
     <None Include="Resources\icons8-analytics-32.png" />
     <None Include="Resources\icons8-request-32.png" />
     <None Include="Resources\icons8-ask-question-32.png" />
+    <None Include="Resources\LibraTrackLogo.png" />
+    <Content Include="LibraTrackLogo.ico" />
     <Content Include="SQLQuery1.sql" />
     <None Include="Resources\icons8-borrow-book-60.png" />
     <None Include="Resources\icons8-return-book-60.png" />
