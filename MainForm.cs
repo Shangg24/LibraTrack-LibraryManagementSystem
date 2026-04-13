@@ -20,13 +20,30 @@ namespace LibraTrack
         private ReturnBooks returnBooks;
         private AnalyticsUserControl analyticsUserControl;
         private BookRequests bookRequests;
+        private Button currentButton;
 
         public Dashboard DashboardInstance => dashboard;
         public MainForm()
         {
             InitializeComponent();
 
+            dashboard_btn.MouseEnter += Button_MouseEnter;
+            dashboard_btn.MouseLeave += Button_MouseLeave;
 
+        }
+
+        private void ActivateButton(Button button)
+        {
+            if (currentButton != null)
+            {
+                currentButton.BackColor = Color.FromArgb(64, 0, 0); // your default
+                currentButton.ForeColor = Color.White;
+            }
+
+            currentButton = button;
+
+            currentButton.BackColor = Color.FromArgb(120, 0, 0); // lighter highlight
+            currentButton.ForeColor = Color.White;
         }
 
 
@@ -52,44 +69,56 @@ namespace LibraTrack
 
         private void dashboard_btn_Click(object sender, EventArgs e)
         {
+            ActivateButton(dashboard_btn);
 
             dashboard.Visible = true;
             addBooks.Visible = false;
             issueBooks.Visible = false;
             returnBooks.Visible = false;
+            bookRequests.Visible = false;
+            analyticsUserControl.Visible = false;
 
             dashboard.refreshData();
         }
 
         private void addBooks_btn_Click(object sender, EventArgs e)
         {
+            ActivateButton(addBooks_btn);
 
             dashboard.Visible = false;
             addBooks.Visible = true;
             issueBooks.Visible = false;
             returnBooks.Visible = false;
+            bookRequests.Visible = false;
+            analyticsUserControl.Visible = false;
 
             addBooks.refreshData();
         }
 
         private void issueBooks_btn_Click(object sender, EventArgs e)
         {
+            ActivateButton(issueBooks_btn);
 
             dashboard.Visible = false;
             addBooks.Visible = false;
             issueBooks.Visible = true;
             returnBooks.Visible = false;
+            bookRequests.Visible = false;
+            analyticsUserControl.Visible = false;
 
             issueBooks.refreshData();
         }
 
         private void returnBooks_btn_Click(object sender, EventArgs e)
         {
+            ActivateButton(returnBooks_btn);
 
             dashboard.Visible = false;
             addBooks.Visible = false;
             issueBooks.Visible = false;
             returnBooks.Visible = true;
+            bookRequests.Visible = false;
+            analyticsUserControl.Visible = false;
 
             returnBooks.refreshData();
         }
@@ -97,11 +126,14 @@ namespace LibraTrack
 
         private void analytics_btn_Click(object sender, EventArgs e)
         {
+            ActivateButton(analytics_btn);
+
             dashboard.Visible = false;
             addBooks.Visible = false;
             issueBooks.Visible = false;
             returnBooks.Visible = false;
             analyticsUserControl.Visible = true;
+            bookRequests.Visible = false;
 
             analyticsUserControl.refreshData();
         }
@@ -251,6 +283,8 @@ namespace LibraTrack
 
         private void request_btn_Click(object sender, EventArgs e)
         {
+            ActivateButton(request_btn);
+
             dashboard.Visible = false;
             addBooks.Visible = false;
             issueBooks.Visible = false;
@@ -260,6 +294,20 @@ namespace LibraTrack
             bookRequests.Visible = true;
 
             bookRequests.refreshData();
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn != currentButton)
+                btn.BackColor = Color.FromArgb(90, 0, 0);
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn != currentButton)
+                btn.BackColor = Color.FromArgb(64, 0, 0);
         }
     }
 }

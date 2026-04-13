@@ -83,6 +83,8 @@
             this.Students_btn.Text = "Students";
             this.Students_btn.UseVisualStyleBackColor = false;
             this.Students_btn.Click += new System.EventHandler(this.Students_btn_Click);
+            this.Students_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.Students_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // GradeSection_btn
             // 
@@ -98,6 +100,8 @@
             this.GradeSection_btn.Text = "Grade / Section";
             this.GradeSection_btn.UseVisualStyleBackColor = false;
             this.GradeSection_btn.Click += new System.EventHandler(this.GradeSection_btn_Click);
+            this.GradeSection_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.GradeSection_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // RegisteredAccounts_btn
             // 
@@ -113,6 +117,8 @@
             this.RegisteredAccounts_btn.Text = "Registered Accounts";
             this.RegisteredAccounts_btn.UseVisualStyleBackColor = false;
             this.RegisteredAccounts_btn.Click += new System.EventHandler(this.RegisteredAccounts_btn_Click);
+            this.RegisteredAccounts_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.RegisteredAccounts_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // label3
             // 
@@ -158,6 +164,8 @@
             this.logout_btn.TabIndex = 9;
             this.logout_btn.UseVisualStyleBackColor = true;
             this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
+            this.logout_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.logout_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // panel3
             // 

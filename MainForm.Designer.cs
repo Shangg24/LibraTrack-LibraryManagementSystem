@@ -103,6 +103,8 @@
             this.request_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.request_btn.UseVisualStyleBackColor = false;
             this.request_btn.Click += new System.EventHandler(this.request_btn_Click);
+            this.request_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.request_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // panel4
             // 
@@ -127,6 +129,8 @@
             this.logout_btn.TabIndex = 8;
             this.logout_btn.UseVisualStyleBackColor = true;
             this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
+            this.logout_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.logout_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // analytics_btn
             // 
@@ -146,6 +150,8 @@
             this.analytics_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.analytics_btn.UseVisualStyleBackColor = false;
             this.analytics_btn.Click += new System.EventHandler(this.analytics_btn_Click);
+            this.analytics_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.analytics_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // pictureBox1
             // 
@@ -175,6 +181,8 @@
             this.returnBooks_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.returnBooks_btn.UseVisualStyleBackColor = false;
             this.returnBooks_btn.Click += new System.EventHandler(this.returnBooks_btn_Click);
+            this.returnBooks_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.returnBooks_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // greet_label
             // 
@@ -205,6 +213,8 @@
             this.issueBooks_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.issueBooks_btn.UseVisualStyleBackColor = false;
             this.issueBooks_btn.Click += new System.EventHandler(this.issueBooks_btn_Click);
+            this.issueBooks_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.issueBooks_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // addBooks_btn
             // 
@@ -224,6 +234,8 @@
             this.addBooks_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.addBooks_btn.UseVisualStyleBackColor = false;
             this.addBooks_btn.Click += new System.EventHandler(this.addBooks_btn_Click);
+            this.addBooks_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.addBooks_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // dashboard_btn
             // 
@@ -243,6 +255,8 @@
             this.dashboard_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.dashboard_btn.UseVisualStyleBackColor = false;
             this.dashboard_btn.Click += new System.EventHandler(this.dashboard_btn_Click);
+            this.dashboard_btn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.dashboard_btn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // mainForm_exitBtn
             // 

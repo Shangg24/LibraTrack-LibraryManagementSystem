@@ -17,6 +17,8 @@ namespace LibraTrack
     {
         SqlConnection connect = new SqlConnection(@"Data Source=acer-extenza\SQLEXPRESS;Initial Catalog=LibraTrack;Integrated Security=True;TrustServerCertificate=True");
 
+        private Button currentButton;
+
 
         public AdminPanel()
         {
@@ -32,6 +34,15 @@ namespace LibraTrack
             adminPanelGradeSection1.Visible = false;
             studentPortalAccounts1.Visible = false;
 
+            RegisteredAccounts_btn.MouseEnter += Button_MouseEnter;
+            RegisteredAccounts_btn.MouseLeave += Button_MouseLeave;
+
+            GradeSection_btn.MouseEnter += Button_MouseEnter;
+            GradeSection_btn.MouseLeave += Button_MouseLeave;
+
+            Students_btn.MouseEnter += Button_MouseEnter;
+            Students_btn.MouseLeave += Button_MouseLeave;
+
             adminPanelAccounts1.BringToFront();
             this.Shown += AdminPanel_Shown;
 
@@ -41,6 +52,20 @@ namespace LibraTrack
 
         }
 
+        private void ActivateButton(Button button)
+        {
+            if (currentButton != null)
+            {
+                currentButton.BackColor = Color.FromArgb(64, 0, 0); // default dark red
+                currentButton.ForeColor = Color.White;
+            }
+
+            currentButton = button;
+
+            currentButton.BackColor = Color.FromArgb(120, 0, 0); // active highlight
+            currentButton.ForeColor = Color.White;
+        }
+
         private void AdminPanel_Shown(object sender, EventArgs e)
         {
             adminPanelAccounts1.refreshData();
@@ -48,8 +73,11 @@ namespace LibraTrack
 
         private void RegisteredAccounts_btn_Click(object sender, EventArgs e)
         {
+            ActivateButton(RegisteredAccounts_btn);
+
             adminPanelGradeSection1.Visible = false;
             adminPanelAccounts1.Visible = true;
+            studentPortalAccounts1.Visible = false;
 
             adminPanelAccounts1.BringToFront();
             adminPanelAccounts1.refreshData();
@@ -57,8 +85,11 @@ namespace LibraTrack
 
         private void GradeSection_btn_Click(object sender, EventArgs e)
         {
+            ActivateButton(GradeSection_btn);
+
             adminPanelAccounts1.Visible = false;
             adminPanelGradeSection1.Visible = true;
+            studentPortalAccounts1.Visible = false;
 
             adminPanelGradeSection1.BringToFront();
             adminPanelGradeSection1.refreshData();
@@ -145,12 +176,30 @@ namespace LibraTrack
 
         private void Students_btn_Click(object sender, EventArgs e)
         {
+            ActivateButton(Students_btn);
+
             adminPanelAccounts1.Visible = false;
             adminPanelGradeSection1.Visible = false;
             studentPortalAccounts1.Visible = true;
 
             studentPortalAccounts1.BringToFront();
              studentPortalAccounts1.refreshData();
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            if (btn != currentButton)
+                btn.BackColor = Color.FromArgb(90, 0, 0);
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            if (btn != currentButton)
+                btn.BackColor = Color.FromArgb(64, 0, 0);
         }
     }
 }
