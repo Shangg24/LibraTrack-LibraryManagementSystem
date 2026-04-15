@@ -26,7 +26,6 @@ namespace LibraTrack
 
             LoadAccounts();
 
-            // LoadAccounts();
             MessageBox.Show("Accounts Loaded");
 
         }
@@ -45,6 +44,11 @@ namespace LibraTrack
             adminPanelAccount_txtSearch.TextChanged += txtSearch_TextChanged;
             adminPanel_txtDateRegister.Format = DateTimePickerFormat.Custom;
             adminPanel_txtDateRegister.CustomFormat = "MM/dd/yyyy";
+
+            dataGridViewUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewUsers.MultiSelect = false;
+            dataGridViewUsers.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+            dataGridViewUsers.DefaultCellStyle.SelectionForeColor = Color.White;
 
         }
 
@@ -65,7 +69,7 @@ namespace LibraTrack
                 using (SqlConnection conn = new SqlConnection(connect.ConnectionString))
                 {
                     conn.Open();
-                    string query = @"SELECT id, id_number AS [ID Number], email AS [Email], username AS [Username], role AS [Role], status AS [status], FORMAT(date_register, 'MM/dd/yyyy') AS [Date Registered] FROM users";
+                    string query = @"SELECT id, id_number AS [ID Number], email AS [Email], username AS [Username], role AS [Role], status AS [Status], FORMAT(date_register, 'MM/dd/yyyy') AS [Date Registered] FROM users";
 
 
                     SqlDataAdapter sda = new SqlDataAdapter(query, conn);
@@ -95,7 +99,22 @@ namespace LibraTrack
                 {
                     conn.Open();
 
-                    string query = @"SELECT id, email, username, role, status, FORMAT(date_register, 'MM/dd/yyyy') AS date_register FROM users WHERE (id LIKE @keyword OR email LIKE @keyword OR username LIKE @keyword OR role LIKE @keyword OR status LIKE @keyword OR FORMAT(date_register, 'MM/dd/yyyy') LIKE @keyword)";
+                    string query = @"SELECT 
+                                    id,
+                                    id_number AS [ID Number],
+                                    email AS [Email],
+                                    username AS [Username],
+                                    role AS [Role],
+                                    status AS [Status],
+                                    FORMAT(date_register, 'MM/dd/yyyy') AS [Date Registered]
+                                    FROM users
+                                    WHERE 
+                                    id_number LIKE @keyword OR
+                                    email LIKE @keyword OR
+                                    username LIKE @keyword OR
+                                    role LIKE @keyword OR
+                                    status LIKE @keyword OR
+                                    FORMAT(date_register, 'MM/dd/yyyy') LIKE @keyword";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -106,6 +125,7 @@ namespace LibraTrack
                         adapter.Fill(table);
 
                         dataGridViewUsers.DataSource = table;
+                        dataGridViewUsers.Columns["id"].Visible = false;
                     }
                 }
             }
@@ -131,28 +151,28 @@ namespace LibraTrack
         // ✅ Highlight color based on status
         private void dataGridViewUsers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dataGridViewUsers.Columns[e.ColumnIndex].Name == "Status")
-            {
-                if (e.Value != null)
-                {
-                    string status = e.Value.ToString();
+            if (dataGridViewUsers.Columns[e.ColumnIndex].Name != "Status")
+                return;
 
-                    if (status == "Approved")
-                    {
-                        e.CellStyle.BackColor = Color.MediumSpringGreen;
-                        e.CellStyle.ForeColor = Color.Black;
-                    }
-                    else if (status == "Pending")
-                    {
-                        e.CellStyle.BackColor = Color.Khaki; // yellow
-                        e.CellStyle.ForeColor = Color.Black;
-                    }
-                    else if (status == "Rejected")
-                    {
-                        e.CellStyle.BackColor = Color.IndianRed; // red
-                        e.CellStyle.ForeColor = Color.Black;
-                    }
-                }
+            if (e.Value == null)
+                return;
+
+            string status = e.Value.ToString();
+
+            if (status.Equals("Approved", StringComparison.OrdinalIgnoreCase))
+            {
+                e.CellStyle.BackColor = Color.MediumSpringGreen;
+                e.CellStyle.ForeColor = Color.Black;
+            }
+            else if (status.Equals("Pending", StringComparison.OrdinalIgnoreCase))
+            {
+                e.CellStyle.BackColor = Color.Khaki;
+                e.CellStyle.ForeColor = Color.Black;
+            }
+            else if (status.Equals("Rejected", StringComparison.OrdinalIgnoreCase))
+            {
+                e.CellStyle.BackColor = Color.IndianRed;
+                e.CellStyle.ForeColor = Color.White;
             }
         }
 
@@ -337,8 +357,8 @@ namespace LibraTrack
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@id", userId);
                     cmd.Parameters.AddWithValue("@pass", defaultPass);
+                    cmd.Parameters.AddWithValue("@id", userId);
                     cmd.ExecuteNonQuery();
                 }
             }

@@ -22,6 +22,9 @@ namespace LibraTrack
         {
             InitializeComponent();
             userId = id;
+
+            resetPass_newPass.UseSystemPasswordChar = false;
+            resetPass_confirmPass.UseSystemPasswordChar = false;
         }
 
         private void resetPass_submitBtn_Click(object sender, EventArgs e)
@@ -52,17 +55,21 @@ namespace LibraTrack
 
             MessageBox.Show("Password changed successfully!");
 
-            MainForm main = new MainForm();
-            main.Show();
             this.Close();
         }
 
         private void resetPass_showPassNew_CheckedChanged(object sender, EventArgs e)
         {
-            bool show = resetPass_showPassNew.Checked;
-
-            resetPass_newPass.UseSystemPasswordChar = !show;
-            resetPass_confirmPass.UseSystemPasswordChar = !show;
+            if (resetPass_showPassNew.Checked)
+            {
+                resetPass_newPass.PasswordChar = '\0';
+                resetPass_confirmPass.PasswordChar = '\0';
+            }
+            else
+            {
+                resetPass_newPass.PasswordChar = '●'; // or '*'
+                resetPass_confirmPass.PasswordChar = '●';
+            }
         }
 
         private void resetPass_Exit_Click(object sender, EventArgs e)

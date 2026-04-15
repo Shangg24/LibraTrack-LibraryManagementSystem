@@ -26,6 +26,11 @@ namespace LibraTrack
 
             dataGridViewGradeSection.CellClick += dataGridViewGradeSection_CellClick;
             dataGridViewGradeSection.ScrollBars = ScrollBars.Both;
+
+            dataGridViewGradeSection.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewGradeSection.MultiSelect = false;
+            dataGridViewGradeSection.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+            dataGridViewGradeSection.DefaultCellStyle.SelectionForeColor = Color.White;
         }
 
 
@@ -178,6 +183,7 @@ namespace LibraTrack
         private void ClearFields()
         {
             selectedGradeSectionId = -1;
+
             gradeSection_gradeLevel.Clear();
             gradeSection_section.Clear();
             gradeSection_department.SelectedIndex = 0;
@@ -222,6 +228,11 @@ namespace LibraTrack
             {
                 connect.Close();
             }
+        }
+
+        private void gradeSection_clearBtn_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }

@@ -28,6 +28,9 @@ namespace LibraTrack
             dataGridViewAddBooks.MultiSelect = false;
             dataGridViewAddBooks.ReadOnly = true;
             dataGridViewAddBooks.ScrollBars = ScrollBars.Both;
+
+            dataGridViewAddBooks.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+            dataGridViewAddBooks.DefaultCellStyle.SelectionForeColor = Color.White;
         }
         public void refreshData()
         {

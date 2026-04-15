@@ -43,6 +43,8 @@ namespace LibraTrack
             dataGridViewIssueBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewIssueBooks.MultiSelect = false;
             dataGridViewIssueBooks.ReadOnly = true;
+            dataGridViewIssueBooks.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+            dataGridViewIssueBooks.DefaultCellStyle.SelectionForeColor = Color.White;
 
             // Setup book search textbox events
             bookIssue_bookTitle.TextChanged += bookIssue_bookTitle_TextChanged;
@@ -53,6 +55,11 @@ namespace LibraTrack
 
             dataGridViewIssueBooks.ScrollBars = ScrollBars.Both;
             dataGridViewBooksToBorrow.ScrollBars = ScrollBars.Both;
+
+            dataGridViewBooksToBorrow.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewBooksToBorrow.MultiSelect = false;
+            dataGridViewBooksToBorrow.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+            dataGridViewBooksToBorrow.DefaultCellStyle.SelectionForeColor = Color.White;
 
             LoadAllBooks();
             LoadGradeSections();
@@ -544,14 +551,25 @@ namespace LibraTrack
                 return;
             }
 
+
+
             using (SqlConnection con = new SqlConnection(connect.ConnectionString))
             {
                 con.Open();
+
+                
+
                 using (SqlTransaction tx = con.BeginTransaction())
                 {
                     try
                     {
                         string issueId = bookIssue_id.Text;
+
+                        string checkQuery = @"
+                            SELECT status 
+                            FROM book_requests 
+                            WHERE ID_no = @idno 
+                            AND book_id IN (SELECT book_id FROM issue_books WHERE issue_id = @issueId)";
 
                         // INSERT ISSUE
                         using (SqlCommand cmd = new SqlCommand(
@@ -571,6 +589,35 @@ namespace LibraTrack
                         // INSERT BOOKS
                         foreach (DataGridViewRow row in dataGridViewBooksToBorrow.Rows)
                         {
+                            string bookId = row.Cells["BookId"].Value.ToString();
+
+                            using (SqlCommand checkCmd = new SqlCommand(@"
+    SELECT COUNT(*)
+    FROM book_requests
+    WHERE ID_no = @idno
+    AND book_id = @bookId
+    AND status = 'Reserved'", con, tx))
+                            {
+                                checkCmd.Parameters.AddWithValue("@idno", bookIssue_idNo.Text.Trim());
+                                checkCmd.Parameters.AddWithValue("@bookId", bookId);
+
+                                int exists = (int)checkCmd.ExecuteScalar();
+
+                                if (exists == 0)
+                                {
+                                    MessageBox.Show(
+                                        $"Book '{bookId}' is not approved yet.",
+                                        "Blocked",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Warning
+                                    );
+
+                                    tx.Rollback();
+                                    return;
+                                }
+                            }
+
+
                             string formattedBookId = row.Cells["BookId"].Value.ToString();
 
                             using (SqlCommand cmd = new SqlCommand(

@@ -25,10 +25,14 @@ namespace LibraTrack
             dataGridViewReturnBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewReturnBooks.MultiSelect = false;
             dataGridViewReturnBooks.ReadOnly = true;
+            dataGridViewReturnBooks.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+            dataGridViewReturnBooks.DefaultCellStyle.SelectionForeColor = Color.White;
 
             dataGridViewBorrowedBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewBorrowedBooks.MultiSelect = true;
             dataGridViewBorrowedBooks.ReadOnly = true;
+            dataGridViewBorrowedBooks.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+            dataGridViewBorrowedBooks.DefaultCellStyle.SelectionForeColor = Color.White;
 
             dataGridViewReturnBooks.ScrollBars = ScrollBars.Both;
             dataGridViewBorrowedBooks.ScrollBars = ScrollBars.Both;
@@ -196,6 +200,7 @@ namespace LibraTrack
 
                         LoadBorrowedBooks(issueId);
                         DisplayIssuedBooksData();
+                        clearFields();
                     }
                     catch (Exception ex)
                     {
@@ -405,10 +410,15 @@ namespace LibraTrack
             returnBooks_email.Text = "";
             //returnBooks_bookTitle.Text = "";
             //returnBooks_author.Text = "";
+
+            dataGridViewBorrowedBooks.DataSource = null;
         }
         private void returnBooks_clearBtn_Click(object sender, EventArgs e)
         {
             clearFields();
+
+            dataGridViewBorrowedBooks.DataSource = null;
+
         }
 
         private void bookReturn_search_TextChanged(object sender, EventArgs e)

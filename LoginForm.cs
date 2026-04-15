@@ -18,7 +18,25 @@ namespace LibraTrack
         {
             InitializeComponent();
             this.AcceptButton = loginBtn;
+            this.Activated += LoginForm_Activated;
+
+            this.Load += LoginForm_Load;
         }
+
+
+        private void LoginForm_Activated(object sender, EventArgs e)
+        {
+            login_username.Clear();
+            login_password.Clear();
+            login_username.Focus();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            login_username.Clear();
+            login_password.Clear();
+        }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -52,14 +70,14 @@ namespace LibraTrack
                     connect.Open();
 
                     // username + password, role + status
-                    String selectData = @"SELECT id, role, status, IsFirstLogin FROM users WHERE username COLLATE SQL_Latin1_General_CP1_CS_AS = @username AND password COLLATE SQL_Latin1_General_CP1_CS_AS = @password";
+                    String selectData = @"SELECT id, role, status, IsFirstLogin, password FROM users WHERE username COLLATE SQL_Latin1_General_CP1_CS_AS = @username";
 
                     string hashedPassword = PasswordHelper.HashPassword(login_password.Text.Trim());
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
                         cmd.Parameters.AddWithValue("@username", login_username.Text.Trim());
-                        cmd.Parameters.AddWithValue("@password", hashedPassword);
+                        //cmd.Parameters.AddWithValue("@password", hashedPassword);
 
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable table = new DataTable();
@@ -67,6 +85,15 @@ namespace LibraTrack
 
                         if (table.Rows.Count >= 1)
                         {
+                            string storedPassword = table.Rows[0]["password"].ToString().Trim();
+                            string inputPassword = PasswordHelper.HashPassword(login_password.Text.Trim());
+
+                            if (storedPassword != inputPassword)
+                            {
+                                MessageBox.Show("Incorrect Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
                             string role = table.Rows[0]["role"].ToString().Trim();
                             string status = table.Rows[0]["status"].ToString().Trim();
 
@@ -76,6 +103,7 @@ namespace LibraTrack
                             // ✅ Role check
                             if (!role.Equals("Admin", StringComparison.OrdinalIgnoreCase) &&
                                 !role.Equals("IT", StringComparison.OrdinalIgnoreCase) &&
+                                !role.Equals("IT Staff", StringComparison.OrdinalIgnoreCase) &&
                                 !role.Equals("Librarian", StringComparison.OrdinalIgnoreCase))
                             {
                                 MessageBox.Show("Unknown role. Please contact IT support.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,7 +112,7 @@ namespace LibraTrack
 
                             // ✅ Only Librarians need approval
                             if (role.Equals("Librarian", StringComparison.OrdinalIgnoreCase) &&
-                                !status.Equals("Approved", StringComparison.OrdinalIgnoreCase))
+                            !status.Trim().Equals("Approved", StringComparison.OrdinalIgnoreCase))
                             {
                                 MessageBox.Show("Your account has not been approved yet.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return;
@@ -96,14 +124,17 @@ namespace LibraTrack
                             if (isFirstLogin)
                             {
                                 ChangePasswordForm cp = new ChangePasswordForm(userId);
-                                cp.Show();
-                                this.Hide();
+                                cp.ShowDialog();
+
+                                // After password change, force re-login
+                                MessageBox.Show("Please login again using your new password.");
                                 return;
                             }
 
                             // ✅ Normal redirect
                             if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase) ||
-                                role.Equals("IT", StringComparison.OrdinalIgnoreCase))
+                                role.Equals("IT", StringComparison.OrdinalIgnoreCase) ||
+                                role.Equals("IT Staff", StringComparison.OrdinalIgnoreCase))
                             {
                                 AdminPanel aForm = new AdminPanel();
                                 aForm.Show();

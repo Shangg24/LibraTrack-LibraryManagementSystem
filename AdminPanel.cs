@@ -24,6 +24,8 @@ namespace LibraTrack
         {
             InitializeComponent();
 
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
             // Dock BOTH usercontrols
             adminPanelAccounts1.Dock = DockStyle.Fill;
             adminPanelGradeSection1.Dock = DockStyle.Fill;
@@ -49,6 +51,7 @@ namespace LibraTrack
             this.UseWaitCursor = false;
             Application.UseWaitCursor = false;
             Cursor.Current = Cursors.Default;
+
 
         }
 

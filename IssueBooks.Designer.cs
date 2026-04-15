@@ -58,6 +58,8 @@
             this.bookIssue_search = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.dataGridViewBooksToBorrow = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.bookIssue_bookTitleSearch = new System.Windows.Forms.ListBox();
@@ -73,8 +75,6 @@
             this.bookIssue_picture = new System.Windows.Forms.PictureBox();
             this.bookIssue_deleteBtn = new System.Windows.Forms.Button();
             this.booksToBorrow_addBtn = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.dataGridViewBooksToBorrow = new System.Windows.Forms.DataGridView();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.bookIssue_issueBtn = new System.Windows.Forms.Button();
@@ -87,11 +87,11 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooksToBorrow)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookIssue_picture)).BeginInit();
-            this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooksToBorrow)).BeginInit();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -371,7 +371,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(807, 17);
+            this.label11.Location = new System.Drawing.Point(806, 17);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 24);
             this.label11.TabIndex = 14;
@@ -410,6 +410,43 @@
             this.panel8.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.panel8.Size = new System.Drawing.Size(772, 333);
             this.panel8.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.dataGridViewBooksToBorrow);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(5, 46);
+            this.panel7.Name = "panel7";
+            this.panel7.Padding = new System.Windows.Forms.Padding(10);
+            this.panel7.Size = new System.Drawing.Size(767, 140);
+            this.panel7.TabIndex = 0;
+            // 
+            // dataGridViewBooksToBorrow
+            // 
+            this.dataGridViewBooksToBorrow.AllowUserToAddRows = false;
+            this.dataGridViewBooksToBorrow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewBooksToBorrow.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewBooksToBorrow.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewBooksToBorrow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBooksToBorrow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewBooksToBorrow.Location = new System.Drawing.Point(10, 10);
+            this.dataGridViewBooksToBorrow.MultiSelect = false;
+            this.dataGridViewBooksToBorrow.Name = "dataGridViewBooksToBorrow";
+            this.dataGridViewBooksToBorrow.ReadOnly = true;
+            this.dataGridViewBooksToBorrow.RowHeadersVisible = false;
+            this.dataGridViewBooksToBorrow.RowHeadersWidth = 51;
+            this.dataGridViewBooksToBorrow.RowTemplate.Height = 24;
+            this.dataGridViewBooksToBorrow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewBooksToBorrow.Size = new System.Drawing.Size(747, 120);
+            this.dataGridViewBooksToBorrow.TabIndex = 34;
+            this.dataGridViewBooksToBorrow.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooksToBorrow_CellClick);
             // 
             // panel6
             // 
@@ -581,43 +618,6 @@
             this.booksToBorrow_addBtn.UseVisualStyleBackColor = false;
             this.booksToBorrow_addBtn.Click += new System.EventHandler(this.booksToBorrow_addBtn_Click);
             // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.dataGridViewBooksToBorrow);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(5, 46);
-            this.panel7.Name = "panel7";
-            this.panel7.Padding = new System.Windows.Forms.Padding(10);
-            this.panel7.Size = new System.Drawing.Size(767, 140);
-            this.panel7.TabIndex = 0;
-            // 
-            // dataGridViewBooksToBorrow
-            // 
-            this.dataGridViewBooksToBorrow.AllowUserToAddRows = false;
-            this.dataGridViewBooksToBorrow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewBooksToBorrow.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewBooksToBorrow.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewBooksToBorrow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBooksToBorrow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewBooksToBorrow.Location = new System.Drawing.Point(10, 10);
-            this.dataGridViewBooksToBorrow.MultiSelect = false;
-            this.dataGridViewBooksToBorrow.Name = "dataGridViewBooksToBorrow";
-            this.dataGridViewBooksToBorrow.ReadOnly = true;
-            this.dataGridViewBooksToBorrow.RowHeadersVisible = false;
-            this.dataGridViewBooksToBorrow.RowHeadersWidth = 51;
-            this.dataGridViewBooksToBorrow.RowTemplate.Height = 24;
-            this.dataGridViewBooksToBorrow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBooksToBorrow.Size = new System.Drawing.Size(747, 120);
-            this.dataGridViewBooksToBorrow.TabIndex = 34;
-            this.dataGridViewBooksToBorrow.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooksToBorrow_CellClick);
-            // 
             // panel9
             // 
             this.panel9.Controls.Add(this.label12);
@@ -674,12 +674,12 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooksToBorrow)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookIssue_picture)).EndInit();
-            this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooksToBorrow)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.ResumeLayout(false);

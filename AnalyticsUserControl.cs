@@ -20,6 +20,11 @@ namespace LibraTrack
         {
             InitializeComponent();
             dataGridViewPrediction.ScrollBars = ScrollBars.Both;
+
+            dataGridViewPrediction.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewPrediction.MultiSelect = false;
+            dataGridViewPrediction.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+            dataGridViewPrediction.DefaultCellStyle.SelectionForeColor = Color.White;
         }
 
 
@@ -37,7 +42,7 @@ namespace LibraTrack
             {
                 connect.Open();
 
-                lblTotalBooks.Text = "Total Books: " + new SqlCommand("SELECT COUNT(*) FROM books", connect).ExecuteScalar();
+                lblTotalBooks.Text = "Total Books: " + new SqlCommand("SELECT COUNT(*) FROM books WHERE date_delete IS NULL", connect).ExecuteScalar();
                 lblBorrowed.Text = "Borrowed: " + new SqlCommand("SELECT COUNT(*) FROM issue_books WHERE status = 'Borrowed'", connect).ExecuteScalar();
                 lblOverdue.Text = "Overdue: " + new SqlCommand(@"SELECT COUNT(*) FROM issues WHERE status = 'Issued' AND return_date < GETDATE()", connect).ExecuteScalar();
                 lblUsers.Text = "Users: " + new SqlCommand("SELECT COUNT(*) FROM users", connect).ExecuteScalar();
@@ -103,7 +108,7 @@ namespace LibraTrack
                 connect.Open();
 
                 SqlCommand cmd = new SqlCommand(@"
-            SELECT TOP 5 b.book_title, COUNT(*) AS total
+            SELECT TOP 10 b.book_title, COUNT(*) AS total
             FROM issue_books i
             INNER JOIN books b ON i.book_id = b.id
             GROUP BY b.book_title

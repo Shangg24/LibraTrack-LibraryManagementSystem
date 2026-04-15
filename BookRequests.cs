@@ -24,11 +24,14 @@ namespace LibraTrack
             InitializeComponent();
             dataGridViewRequests.CellFormatting += dataGridViewRequests_CellFormatting;
 
-
+            dataGridViewRequests.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewRequests.MultiSelect = false;
+            dataGridViewRequests.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+            dataGridViewRequests.DefaultCellStyle.SelectionForeColor = Color.White;
 
         }
 
-        public void LoadRequests()
+        public void LoadRequests(string keyword = "")
         {
             if (connect.State != ConnectionState.Open)
                 connect.Open();
@@ -42,15 +45,22 @@ namespace LibraTrack
                r.status
         FROM book_requests r
         JOIN books b ON r.book_id = b.id
+        WHERE 
+            (@keyword = '' OR 
+             r.ID_no LIKE @keyword OR 
+             r.request_id LIKE @keyword OR 
+             b.book_title LIKE @keyword)
         ORDER BY
             CASE
                 WHEN r.status = 'Pending' THEN 1
                 WHEN r.status = 'Reserved' THEN 2
                 WHEN r.status = 'Rejected' THEN 3
-        END,
-        r.request_date DESC";
+            END,
+            r.request_date DESC";
 
             SqlDataAdapter adapter = new SqlDataAdapter(query, connect);
+            adapter.SelectCommand.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
             DataTable table = new DataTable();
             adapter.Fill(table);
 
@@ -81,6 +91,7 @@ namespace LibraTrack
         private void refresh_btn_Click(object sender, EventArgs e)
         {
             LoadRequests();
+            request_searchBtn.Clear();
         }
 
         private void approve_btn_Click(object sender, EventArgs e)
@@ -214,6 +225,11 @@ namespace LibraTrack
                 else if (status == "Completed")
                     e.CellStyle.BackColor = Color.LightGreen;
             }
+        }
+
+        private void request_searchBtn_TextChanged(object sender, EventArgs e)
+        {
+            LoadRequests(request_searchBtn.Text.Trim());
         }
     }
 }

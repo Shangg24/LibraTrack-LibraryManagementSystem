@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPanel));
             this.panel2 = new System.Windows.Forms.Panel();
             this.Students_btn = new System.Windows.Forms.Button();
             this.GradeSection_btn = new System.Windows.Forms.Button();
@@ -37,15 +38,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.logout_btn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.adminPanelAccounts1 = new LibraTrack.AdminPanelAccounts();
-            this.adminPanelGradeSection1 = new LibraTrack.AdminPanelGradeSection();
-            this.studentPortalAccounts1 = new LibraTrack.StudentPortalAccounts();
             this.adminPanel_exitBtn = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.adminPanel_minimizeBtn = new System.Windows.Forms.Label();
             this.adminPanel_maximizeBtn = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.adminPanelAccounts1 = new LibraTrack.AdminPanelAccounts();
+            this.adminPanelGradeSection1 = new LibraTrack.AdminPanelGradeSection();
+            this.studentPortalAccounts1 = new LibraTrack.StudentPortalAccounts();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -178,30 +179,6 @@
             this.panel3.Size = new System.Drawing.Size(962, 632);
             this.panel3.TabIndex = 3;
             // 
-            // adminPanelAccounts1
-            // 
-            this.adminPanelAccounts1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.adminPanelAccounts1.Location = new System.Drawing.Point(0, 0);
-            this.adminPanelAccounts1.Name = "adminPanelAccounts1";
-            this.adminPanelAccounts1.Size = new System.Drawing.Size(962, 632);
-            this.adminPanelAccounts1.TabIndex = 1;
-            // 
-            // adminPanelGradeSection1
-            // 
-            this.adminPanelGradeSection1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.adminPanelGradeSection1.Location = new System.Drawing.Point(0, 0);
-            this.adminPanelGradeSection1.Name = "adminPanelGradeSection1";
-            this.adminPanelGradeSection1.Size = new System.Drawing.Size(962, 632);
-            this.adminPanelGradeSection1.TabIndex = 0;
-            // 
-            // studentPortalAccounts1
-            // 
-            this.studentPortalAccounts1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.studentPortalAccounts1.Location = new System.Drawing.Point(0, 0);
-            this.studentPortalAccounts1.Name = "studentPortalAccounts1";
-            this.studentPortalAccounts1.Size = new System.Drawing.Size(962, 632);
-            this.studentPortalAccounts1.TabIndex = 2;
-            // 
             // adminPanel_exitBtn
             // 
             this.adminPanel_exitBtn.AutoSize = true;
@@ -284,6 +261,30 @@
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
+            // adminPanelAccounts1
+            // 
+            this.adminPanelAccounts1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.adminPanelAccounts1.Location = new System.Drawing.Point(0, 0);
+            this.adminPanelAccounts1.Name = "adminPanelAccounts1";
+            this.adminPanelAccounts1.Size = new System.Drawing.Size(962, 632);
+            this.adminPanelAccounts1.TabIndex = 1;
+            // 
+            // adminPanelGradeSection1
+            // 
+            this.adminPanelGradeSection1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.adminPanelGradeSection1.Location = new System.Drawing.Point(0, 0);
+            this.adminPanelGradeSection1.Name = "adminPanelGradeSection1";
+            this.adminPanelGradeSection1.Size = new System.Drawing.Size(962, 632);
+            this.adminPanelGradeSection1.TabIndex = 0;
+            // 
+            // studentPortalAccounts1
+            // 
+            this.studentPortalAccounts1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.studentPortalAccounts1.Location = new System.Drawing.Point(0, 0);
+            this.studentPortalAccounts1.Name = "studentPortalAccounts1";
+            this.studentPortalAccounts1.Size = new System.Drawing.Size(962, 632);
+            this.studentPortalAccounts1.TabIndex = 2;
+            // 
             // AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -295,6 +296,7 @@
             this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "AdminPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

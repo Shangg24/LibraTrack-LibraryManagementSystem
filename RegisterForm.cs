@@ -63,9 +63,13 @@ namespace LibraTrack
                                 //TO GET THE DATE TODAY
                                 DateTime day = DateTime.Today;
 
-                                String insertData = "INSERT INTO users (email, id_number, role, username, password, date_register) " + "VALUES(@email, @idnumber, @role, @username, @password, @date)";
+                                String insertData =
+                                    @"INSERT INTO users 
+                                    (email, id_number, role, username, password, status, IsFirstLogin, date_register)
+                                    VALUES
+                                    (@email, @idnumber, @role, @username, @password, 'Pending', 0, @date)";
 
-                                string hashedPassword = PasswordHelper.HashPassword(register_IDNumber.Text);
+                                string hashedPassword = PasswordHelper.HashPassword(register_password.Text);
 
                                 using (SqlCommand insertCMD = new SqlCommand(insertData, connect))
                                 {
@@ -74,6 +78,8 @@ namespace LibraTrack
                                     insertCMD.Parameters.AddWithValue("@role", register_role.Text.Trim());
                                     insertCMD.Parameters.AddWithValue("@username", register_username.Text.Trim());
                                     insertCMD.Parameters.AddWithValue("@password", hashedPassword);
+                                    insertCMD.Parameters.AddWithValue("@status", "Pending");
+                                    insertCMD.Parameters.AddWithValue("@IsFirstLogin", 1);
                                     insertCMD.Parameters.AddWithValue("@date", day.ToString());
 
                                     insertCMD.ExecuteNonQuery();

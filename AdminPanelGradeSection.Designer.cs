@@ -259,6 +259,7 @@
             this.gradeSection_clearBtn.TabIndex = 16;
             this.gradeSection_clearBtn.Text = "Clear";
             this.gradeSection_clearBtn.UseVisualStyleBackColor = false;
+            this.gradeSection_clearBtn.Click += new System.EventHandler(this.gradeSection_clearBtn_Click);
             // 
             // label3
             // 

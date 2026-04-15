@@ -24,6 +24,10 @@ namespace LibraTrack
             dataGridViewStudentsPortal.RowPrePaint += dataGridViewStudentsPortal_RowPrePaint;
 
             dataGridViewStudentsPortal.ScrollBars = ScrollBars.Both;
+
+            dataGridViewStudentsPortal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewStudentsPortal.MultiSelect = false;
+
         }
 
         private void stp_create_btn_Click(object sender, EventArgs e)
@@ -90,28 +94,16 @@ namespace LibraTrack
                 dataGridViewStudentsPortal.DataSource = dt;
 
                 dataGridViewStudentsPortal.EnableHeadersVisualStyles = false;
+                dataGridViewStudentsPortal.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+                dataGridViewStudentsPortal.DefaultCellStyle.SelectionForeColor = Color.White;
+                dataGridViewStudentsPortal.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+
 
                 dataGridViewStudentsPortal.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
                 dataGridViewStudentsPortal.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
                 dataGridViewStudentsPortal.ColumnHeadersDefaultCellStyle.Font =
                     new Font("Arial Narrow", 9);
 
-                foreach (DataGridViewRow row in dataGridViewStudentsPortal.Rows)
-                {
-                    if (row.Cells["IsActive"].Value != null)
-                    {
-                        bool isActive = Convert.ToBoolean(row.Cells["IsActive"].Value);
-                        
-                        if (isActive)
-                        {
-                            row.DefaultCellStyle.BackColor = Color.Honeydew;
-                        }
-                        else
-                        {
-                            row.DefaultCellStyle.BackColor = Color.MistyRose;
-                        }
-                    }
-                }
             }
         }
 
@@ -240,22 +232,23 @@ namespace LibraTrack
 
         private void dataGridViewStudentsPortal_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            if (dataGridViewStudentsPortal.Rows[e.RowIndex].Cells["IsActive"].Value != null)
-            {
-                bool isActive = Convert.ToBoolean(
-                    dataGridViewStudentsPortal.Rows[e.RowIndex].Cells["IsActive"].Value
-                );
+            var row = dataGridViewStudentsPortal.Rows[e.RowIndex];
 
-                if (isActive)
-                {
-                    // ACTIVE → Light Green
-                    dataGridViewStudentsPortal.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
-                }
-                else
-                {
-                    // INACTIVE → Light Red
-                    dataGridViewStudentsPortal.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
-                }
+            // ✅ If selected → FORCE maroon
+            if (row.Selected)
+            {
+                row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(128, 0, 0);
+                row.DefaultCellStyle.SelectionForeColor = Color.White;
+                return;
+            }
+
+            if (row.Cells["IsActive"].Value != null)
+            {
+                bool isActive = Convert.ToBoolean(row.Cells["IsActive"].Value);
+
+                row.DefaultCellStyle.BackColor = isActive
+                    ? Color.LightGreen
+                    : Color.LightCoral;
             }
         }
 
